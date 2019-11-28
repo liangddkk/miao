@@ -14,7 +14,6 @@
       color: white;  /*字体颜色 */
       width: 600px;  
     }
-
     .header{
       margin: auto;   
       width: 600px; 
@@ -23,7 +22,6 @@
       margin: auto;   
       width: 600px; 
     }
-
     .bottom{
       width: 600px; 
       margin: auto;  
@@ -31,7 +29,6 @@
     .bottom div{
       border-bottom: 1px black dotted;
     }
-
     .footer{
       margin: auto;
       background-color: violet;
@@ -50,24 +47,20 @@
       background-color: RGB(255,192,203);
       margin-bottom: 15px;
     }
-
     .main div:nth-child(3n-1){
       margin-left: 210px;
       margin-top: -61px;
     }
-
     .main div:nth-child(3n){
       margin-left: 420px;
       margin-top: -61px;
     }
-
     .span{
       margin: auto;
       width: 600px;
       font-size: 0;
       vertical-align: middle;
     }
-
     span{
       font-size: 16px;
       text-align: center;
@@ -78,30 +71,25 @@
       border: 3px solid;
       background-color: pink;
     }
-
     span:nth-child(3n+2){
       margin-left: 21px;
       margin-bottom: 15px;
     }
-
     span:nth-child(3n+3){
       margin-left: 21px;
       margin-bottom: 15px;
     }
-
     span:hover{
       background-color: red;
     }
-
     .main div:hover{
       background-color: red;
     }
-
-    ul{
+    .ul{
       margin: auto;
       width: 600px;
     }
-    ul li{
+    .ul li{
       text-align: center;
       line-height: 40px;
       margin-left: -20px;
@@ -112,22 +100,65 @@
       border: 3px solid;
       list-style: none;
     }
+    .ul li:hover{
+      background-color: red;
+    }
+    .ul li:nth-child(n+5):nth-child(-n+8){
+      margin-left: 190px;
+    }
+    .ul li:nth-child(n+9){
+      margin-left: 400px;
+    }
+    .ul li:nth-child(4n+5){
+      margin-top:-244px;
+    }
 
-    ul li:hover{
+
+
+    .ulli {
+      margin: auto;
+      width: 600px;
+      font-size: 0;
+    }
+    
+    
+    .ulli li{
+      font-size: 16px;
+      text-align: center;
+      line-height: 40px;
+      display:inline-block;/*inline-block去除li无序列表*/
+      width: 180px;
+      height: 40px;
+      border: 3px solid;
+      background-color: pink;
+    }
+
+    /*第一列*/
+    .ulli li:nth-child(3n+1){
+      margin-left: -20px;
+
+
+    }
+
+    /*第二列*/
+    .ulli li:nth-child(3n+2){
+      margin-left: 24px;
+
+      margin-bottom: 15px;
+    }
+
+    /*第三列*/
+    .ulli li:nth-child(3n+3){
+      margin-left: 24px;
+
+      margin-bottom: 15px;
+    }
+    .ulli li:hover{
       background-color: red;
     }
 
-    ul li:nth-child(n+5):nth-child(-n+8){
-      margin-left: 190px;
-    }
 
-    ul li:nth-child(n+9){
-      margin-left: 400px;
-    }
 
-    ul li:nth-child(4n+5){
-      margin-top:-244px;
-    }
   </style>
 </head>
 <body>
@@ -156,7 +187,7 @@
     <div>产品</div>
     <div>产品</div>
   </div>
-  <ul>
+  <ul class="ul">
     <li>宽180高40(包含边框)</li>
     <li>水平间隙30px</li>
     <li>垂直间隙15px</li>
@@ -184,6 +215,22 @@
     <span>产品</span>
     <span>产品</span>
   </div>
+
+  <ul class="ulli">
+    <li>宽180高40(包含边框)</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li>水平间隙30px</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li>垂直间隙15px</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li>边框宽度3px</li>
+    <li>产品</li>
+    <li>产品</li>
+  </ul>
+
   <div class="bottom">
       <div>link</div>
       <div>link</div>
