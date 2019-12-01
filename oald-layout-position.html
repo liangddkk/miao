@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    * {
+      xbackground-color: rgba(0, 0, 0, 0.1);
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .olad div {
+      box-sizing: border-box;
+    }
+
+    div>div>div {
+      xbackground-color: red;
+    }
+
+    .olad {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px black solid;
+    }
+
+    .header {
+      position: absolute;
+      background-color: red;
+      top: 0;
+      left: 0;
+      width: 20%;
+      bottom: 0;
+      xborder: 1px black solid;
+    }
+
+    .middle {
+      xbackground-color: gray;
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      width: 40%;
+      height: 100%;
+      xborder: 1px black solid;
+      top: 0;
+      left: 20%;
+      bottom: 0;
+    }
+
+    .middleTop {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 25%;
+      xborder: 1px black solid;
+      background-color: gray;
+    }
+
+    .middlebottom {
+      background-color: purple;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 75%;
+      xborder: 1px black solid;
+    }
+
+    .bottom {
+      top: 0;
+      left: 60%;
+      bottom: 0;
+      position: absolute;
+      background-color: blue;
+      margin: 0;
+      padding: 0;
+      width: 20%;
+      height: 100%;
+      zborder: 1px black solid;
+    }
+
+    .footer {
+      top: 0;
+      right: 0;
+      left: 80%;
+      bottom: 0;
+      position: absolute;
+      background-color: yellow;
+      margin: 0;
+      padding: 0;
+      width: 20%;
+      height: 100%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="olad">
+    <div class="header">123</div>
+    <div class="middle">
+      <div class="middleTop">456</div>
+      <div class="middlebottom">789</div>
+    </div>
+    <div class="bottom">111</div>
+    <div class="footer">222</div>
+  </div>
+</body>
+
+</html>
