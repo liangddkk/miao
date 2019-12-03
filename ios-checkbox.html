@@ -58,6 +58,97 @@
       border-color: #49E845;
       right: 0px;
     }
+
+    .radio {
+      width: 80px;
+      position: relative;
+    }
+
+    .label {
+      margin-top: 10px;
+    }
+
+
+
+    .radio {
+      display: none;
+    }
+
+
+
+    .label-ButtonOne {
+      position: relative;
+      top: 0;
+      display: block;
+      border-radius: 20px;
+      background-color: ;
+      border: solid 2px black;
+      width: 20px;
+      height: 20px;
+    }
+
+    .label-ButtonOne::before {
+      display: block;
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      position: absolute;
+      right: 3px;
+      bottom: 3px;
+      transition: .1s;
+    }
+
+    .label-ButtonTwo {
+      position: relative;
+      display: block;
+      border-radius: 20px;
+      background-color: ;
+      border: solid 2px black;
+      width: 20px;
+      height: 20px;
+    }
+
+    .label-ButtonTwo::before {
+      display: block;
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      position: absolute;
+      right: 3px;
+      bottom: 3px;
+
+      transition: .1s;
+    }
+
+    .label-ButtonThree {
+      position: relative;
+      display: block;
+      border-radius: 20px;
+      background-color: ;
+      border: solid 2px black;
+      width: 20px;
+      height: 20px;
+    }
+
+    .label-ButtonThree::before {
+      display: block;
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      position: absolute;
+      right: 3px;
+      bottom: 3px;
+
+      transition: .1s;
+    }
+
+    .radio:checked+.label:before {
+      background-color: rgb(4, 194, 98);
+      border: solid 2px green;
+    }
   </style>
 </head>
 
@@ -66,6 +157,19 @@
     <input type="checkbox" class="iosButton" name="Button" id="click" checked>
     <label class="labelIosButton" for="click"></label>
   </div>
+  <hr>
+  <!--radio相同的name只能选一个-->
+  <div>
+    <input type="radio" class="radio radio-ButtonOne" name="radio" id="upOne" checked>
+    <label class="a label label-ButtonOne" for="upOne"></label>
+
+  </div>
+
+  <input type="radio" class="radio radio-ButtonTwo" name="radio" id="upTwo">
+  <label class="label label-ButtonTwo" for="upTwo"></label>
+  <input type="radio" class="radio radio-ButtonThree" name="radio" id="upThree">
+  <label class="label label-ButtonThree" for="upThree"></label>
+
 </body>
 
 </html>
