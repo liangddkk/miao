@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    * {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    ul li {
+      /*所有的li相对于自身定位,所有属性保留*/
+      position: relative;
+      white-space: nowrap;
+      /*菜单不折行*/
+    }
+
+    ul ul {
+      display: none;
+      position: absolute;
+      xtop: 100%;
+      xleft: 0;
+
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.menu>li {
+      display: inline-block;
+    }
+
+    ul ul ul {
+      top: 0;
+      left: 100%;
+    }
+
+    li:hover>ul {
+      display: block;
+
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="menu">
+    <li>
+      文件
+      <ul>
+        <li>保存</li>
+        <li>另存为</li>
+        <li>退出</li>
+      </ul>
+    </li>
+    <li>
+      文件
+      <ul>
+        <li>保存</li>
+        <li>另存为</li>
+        <li>
+          退出
+          <ul>
+            <li>保存</li>
+            <li>另存为</li>
+            <li>退出</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      文件
+      <ul>
+        <li>保存</li>
+        <li>另存为</li>
+        <li>退出</li>
+      </ul>
+    </li>
+  </ul>
+</body>
+
+</html>

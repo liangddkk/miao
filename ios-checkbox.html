@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>apple button</title>
+  <style>
+    * {
+      xbackground: rgba(0, 0, 0, 0.1);
+    }
+
+    .apple {
+      width: 52px;
+      position: relative;
+    }
+
+    .iosButton {
+      display: none;
+    }
+
+    .labelIosButton {
+      padding: 0;
+      line-height: 26px;
+      display: block;
+      height: 26px;
+      border-radius: 26px;
+      /*原型*/
+      background-color: white;
+      border: 2px solid #E3E3E3;
+      cursor: pointer;
+      /*鼠标指针*/
+      transition: all 0.3s ease-in;
+    }
+
+    .labelIosButton::before {
+      content: "";
+      top: 0;
+      bottom: 0;
+      right: 26px;
+      width: 26px;
+      display: block;
+      position: absolute;
+      border-radius: 26px;
+      /*原型*/
+      background-color: white;
+      border: 2px solid #E3E3E3;
+      cursor: pointer;
+      /*鼠标指针*/
+      transition: all 0.3s ease-in;
+    }
+
+    .iosButton:checked+.labelIosButton {
+      background-color: #49E845;
+    }
+
+    .iosButton:checked+.labelIosButton,
+    .iosButton:checked+.labelIosButton::before {
+      border-color: #49E845;
+      right: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="apple">
+    <input type="checkbox" class="iosButton" name="Button" id="click" checked>
+    <label class="labelIosButton" for="click"></label>
+  </div>
+</body>
+
+</html>
