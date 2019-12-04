@@ -59,6 +59,7 @@
       right: 0px;
     }
 
+    /*radio studio 第一次提交的代码*/
     .radio {
       width: 80px;
       position: relative;
@@ -149,6 +150,45 @@
       background-color: rgb(4, 194, 98);
       border: solid 2px green;
     }
+
+    /*radio studio 第二次修改的代码*/
+    input[class ="radioUpTwo"]{
+      display: none;
+    }
+
+    label[class ="labelUpTwo"]{
+      position: relative;
+      display: inline-block;
+      border-radius: 20px;
+      border: solid 2px black;
+      width: 20px;
+      height: 20px;
+    }
+
+    label[class ="labelUpTwo"]::before {
+      content: "";
+      width: 0px;
+      height: 0px;
+      border-radius: 9999px;
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      margin:auto;
+      transition: .3s;
+    }
+
+    input[class ="radioUpTwo"]:checked+label[class ="labelUpTwo"]{
+      border: solid 2px green;
+    }
+    input[class ="radioUpTwo"]:checked+label[class ="labelUpTwo"]:before {
+      background-color: rgb(4, 194, 98);
+      width: 12px;
+      height: 12px;
+    }
+
+
   </style>
 </head>
 
@@ -159,16 +199,21 @@
   </div>
   <hr>
   <!--radio相同的name只能选一个-->
-  <div>
-    <input type="radio" class="radio radio-ButtonOne" name="radio" id="upOne" checked>
-    <label class="a label label-ButtonOne" for="upOne"></label>
-
-  </div>
-
+  <h3>radio studio 第一次提交的代码</h3>
+  <input type="radio" class="radio radio-ButtonOne" name="radio" id="upOne" checked>
+  <label class="a label label-ButtonOne" for="upOne"></label>
   <input type="radio" class="radio radio-ButtonTwo" name="radio" id="upTwo">
   <label class="label label-ButtonTwo" for="upTwo"></label>
   <input type="radio" class="radio radio-ButtonThree" name="radio" id="upThree">
   <label class="label label-ButtonThree" for="upThree"></label>
+
+  <h3>radio studio 第二次修改的代码</h3>
+  <input type="radio" class="radioUpTwo" name="radioUpTwo" id="up-One" checked>
+  <label class="labelUpTwo" for="up-One"></label>
+  <input type="radio" class="radioUpTwo" name="radioUpTwo" id="up-Two">
+  <label class="labelUpTwo" for="up-Two"></label>
+  <input type="radio" class="radioUpTwo" name="radioUpTwo" id="up-Three">
+  <label class="labelUpTwo" for="up-Three"></label>
 
 </body>
 
