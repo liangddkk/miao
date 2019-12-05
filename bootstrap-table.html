@@ -7,48 +7,55 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    .table {
-      line-height: 1.5;
-      border-collapse: collapse;
-      width: 100%;
-    }
+*{
+  xbackground-color:rgba(0,0,0,0.1);
+}
 
-    .table thread {
-      padding: 12px;
-      font-weight: bold;
-    }
+.table{
+  line-height:1.5;
+  border-collapse:collapse;
+  width:100%;
+}
 
-    .table thread th {
-      border: 2px solid #dee2e6;
-    }
+.table thread{
+  padding:12px;
+  font-weight:bold;
+}
 
-    .table th,
-    .table td {
-      border-top: 2px solid #dee2e6;
-      border-bottom: 2px solid #dee2e6;
-      padding: 12px;
-      text-align: left;
-    }
+.table thread th{
+  border:2px solid #dee2e6;
+}
 
-    /*.table-dark*/
-    .table.table-dark {
-      background-color: rgb(52, 58, 64);
-      color: white
-    }
+.table th,
+.table td{
+  border-top:2px solid #dee2e6;
+  border-bottom:2px solid #dee2e6;
+  padding:12px;
+  text-align:left;
+}
 
-    .table.table-dark thread th,
-    .table.table-dark th,
-    .table.table-dark td {
-      border-color: rgb(69, 77, 85);
-    }
-
-    /*thred .thead-dark .thead-light*/
-    .table .thead-dark th{
+.table.table-dark{/*同类选择器同级，.table ，.table-dark*/
   background-color:rgb(52,58,64);
   color:white
 }
 
-.table .thead-light th{
+.table.table-dark thread th,
+.table.table-dark th,
+.table.table-dark td{
+  border-color:rgb(69,77,85);
+}
+
+.table .thead-dark th{
+  background-color:rgb(52,58,64);
+  color:white
+}
+
+.table .thead-light th{/*同类选择器下级*/
+  background-color:rgb(233,236,239);
+}
+
+.table.table-striped tbody tr th:not-child(n+1),
+.table.table-striped tbody tr td{
   background-color:rgb(233,236,239);
 }
   </style>
