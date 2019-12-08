@@ -1,0 +1,643 @@
+大喵教育前端培训
+================
+
+## 阶段性测试 2019.12.06
+
+### 大喵教育版权所有，请勿泄漏
+
+
+
+01. 列出至少 7 个常用 Linux 命令及其基本使用方法
+- ls 找到当前工作目录的内容
+- mkdir 新建一个目录
+- pwd 显示当前工作目录
+- cd  切换文件夹路径
+- rmdir 删除给定的目录
+- rm 删除给定的文件
+- cp 复制文件到给定的目录
+- cat 用于文件输出
+
+02. 什么是 html 实体？常见 html 实体有哪些？
+- 一些字符在 HTML 中是预留的，拥有特殊的含义，比如小于号‘<’用于定义 HTML 标签的开始。
+- 空格 &nbsp;	
+- <   &lt;
+- >   &gt;
+- &   &amp;
+- ©   &copy;
+- "   &quot;
+- '   &apos;
+03. 计算机为什么使用二进制？
+- 1.技术实现简单，计算机是由逻辑电路组成，逻辑电路通常只有两个状态，开关的接通与断开，这两种状态正好可以用1和0表示。
+- 2.简化运算规则：两个二进制数和，积运算组合各有三种，运算规则简单，有利于简化计算机内部结构，提高运算速度。
+- 3.适合逻辑运算：逻辑代数是逻辑运算的理论基础，二进制只有两个代码，正好与逻辑代数中的“真”和“假”相吻合。
+- 4.易于进行转换，二进制与十进制数，易于相互转换。
+- 5.用二进制表示数据具有抗干扰能力强，可靠性高等优点。因为每位数据只有高低两个状态，当受到一定程度的干扰时，仍能可靠地分辨出它是个还是低。
+
+04. 什么是 Unicode？如何表示，有什么作用？最通用的 Unicode 实现是？
+- Unicode是计算机科学领域里的一项业界标准。它对世界上大部分的文字系统进行了整理、编码，使得电脑可以用更为简单的方式来呈现和处理文字。
+- 常用的实现方式是UTF-16LE、UTF-16BE和UTF-8。
+
+05. 什么是 GUI，什么是 CLI，什么是接口/界面？现实生活中有哪些例子？
+- GUI 计算机图形用户界面
+- CLI 计算机命令行界面
+- 接口是是一些预先定义的函数，目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力，而又无需访问源码，或理解内部工作机制的细节
+- 接口例子：
+-     1.API开放接口,是两套ERP系统对接起来，数据打通
+06. 在什么情况下 html 标签可以不需要闭合？
+    - 关键看你声明的DOCTYPE
+07. 在一些情况下某些非自闭合标签的结束标签可以省略的原因是什么？
+08. 什么是费茨定律？它有哪些应用？
+    - 一个人机交互以及人体工程学中人类活动的模型，它预测了快速移动到目标区域所需的时间是目标区域的距离和目标区域的大小的函数。
+    - 应用：产品设计、交互设计
+09. 为什么英文很重要？
+    1.优秀的计算机书籍都是英文的，中文翻译需要时间
+    2.优秀的开源项目都是英文沟通的
+    3.英文技术文档最详细
+10. 将二进制 `10010` 数转换为十进制数
+    18
+11. 将十六进制数 `ABCDEF` 转换为十进制数
+    11259375
+12. 将十进制数 `435` 分别转换成二进制数和十六进制数
+    二进制：110110011
+    十六进制：1b3
+13. 列出 HTML 中常见的全局属性
+    1.class
+    2.dir
+    3.id
+    4.style
+    5.title 
+14. 什么是操作系统的路径（Path）？它的作用及应用场景是？
+    路径是一种电脑文件或目录的名称的通用表现形式，它指向文件系统上的一个唯一位置
+    路径在计算机科学中被广泛采用，用以表示现代操作系统中常见的文件夹/文件关系。
+    在构建统一资源定位符（URL）时也必不可少。资源可以采用绝对路径表示，也可采用相对路径表示。
+    应用：构建绝对路径，方便计算机快速找到文件/文件夹
+15. 什么是文本文件？什么是二进制文件？它们最明显的区别是？
+文本文件是使用文本编辑器打开可以展现出人类可读的信息的文件
+二进制文件是文件的编码不符合任意一种文字编码规范，使用文本编辑器打开只能看到乱码，就可以认为它属于二进制文件
+区别在于打开这个文件的程序在对其内容的解释上
+16. 为什么说 html 与数学公式有诸多相似之处？
+17. 几种常见图片格式有什么区别和特点？
+    - 生成树状结构
+常见的图片格式有BMP、GIF、JPEG、PNG、webp、SVG
+区别和特点
+gif  文件小，支持动画、透明，无兼容性问题。但是只支持256种颜色	
+jpg  色彩丰富，文件小。但是有损压缩，反复保存图片质量下降明显	
+png  无损压缩，支持透明，简单图片尺寸小。但是不支持动画，色彩丰富的图片尺寸大	
+webp 文件小，支持有损和无损压缩，支持动画、透明。但是浏览器兼容性不好	
+BMP  无损压缩，图质最好，支持索引色和直接色。但是图片非常大
+SVG  支持放大缩小而不影响画质，但是编写麻烦，性能差	
+18. `data-*` 属性一般是用来干嘛？
+data-* 全局属性 是一类被称为自定义数据属性的属性，它赋予我们在所有 HTML 元素上嵌入自定义数据属性的能力。
+应用；通过添加 data-* 属性，即使是普通的 HTML 元素也能变成相当复杂且强大的编程对象
+19. 用什么方法扩大一个 checkbox 的可点击区域？
+- 使用border属性扩大可点击区域
+- 使用伪元素扩大可点击区域
+- 修改checkbox样式
+- 增加label
+20. 什么是 MIME Type？
+MIME Type是媒体资源类型
+21. 哪些标签可以使用 target 属性？哪些标签可以使用 href 属性？
+   - 使用target属性：<a> <form> <base>  <iframe>
+   - 使用href属性：<a> <link>
+22. 什么是 BOM 头？
+BOM是用来判断文本文件是哪一种Unicode编码的标记，其本身是一个Unicode字符（"\uFEFF"），位于文本文件头部。
+23. group 类型的标签有哪些？
+    - <hgroup>
+
+    - <colgroup>
+
+    - <optgroup>
+
+    - <ul>, <ol>
+24. 什么是 SEO？
+SEO是利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。
+25. 分别列出每种常见浏览器的内核名称（自己查）。
+    IE: trident内核
+    Firefox：gecko内核
+    Safari：webkit内核
+    Opera：以前是presto内核，Opera现已改用Google Chrome的Blink内核
+    Chrome：Blink(基于webkit，Google与Opera Software共同开发)
+26. 列表类标签有哪些？分别如何使用？需要注意些什么？
+1、无序列表
+ul li
+2、有序列表
+ol li
+3、自定义列表
+dl，defined list 定义列表
+dt，表示关键字（词）
+dd，表示对dt的描述内容
+
+28. 为什么不同类型的标签的 fallback 内容要以不同的形式提供？
+29. 分别写出在 head 中设定页面编码，设定 icon，引入样式表的标签
+设定页面编码
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+引入icon
+ <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+ 引入样式表
+ <link rel="stylesheet" href="xiaomi.css">
+30. 什么叫做可访问性，html 中为此做了什么工作？
+1.使用语义化标签
+2.文本内容在html标签有良好的展示
+3.页面布局
+4.UI控制
+31. 写出以下几个符号的 ascii 码：`a，A，0，CR，LF，空格，NBSP`。
+
+ - a : 97
+    - A: 65
+    - 0: 48
+    - CR: 13
+    - LF: 10
+    - 空格: 32
+    - NBSP: 160
+
+
+32. 中英互翻
+    * geek 极客
+    * nerd 书呆子
+    * hacker 骇客
+    * edge  边缘
+    IE浏览器
+    * bleeding/cutting edge 前沿/尖端/可能存在风险的技术
+    * HTML 超文本标记语言 
+    * coordinate   坐标
+    * polygon      多边形
+    * bit          比特
+    * byte         字节
+    * alternative  可选择性
+    * 属性         attributes
+    * obsolate     废弃的 
+    * 二进制        Binary
+    * 十进制        Decimal
+    * 十六进制      Hex
+    * octal        八进制
+    * deprecate    反对
+    * loop         循环
+    * 行           row           
+    * 列           col
+    
+    * horizontal   水平
+    * 语义化        semantic
+    * 可访问性      accessibility
+
+
+33. 用文字描述如下选择器将选择哪些（个）元素
+  ```css
+  div, h1 {}
+  html中div,h1标签
+  div[c [id="abc"] {}
+  div标签中以class结尾，id为abc的标签
+  div:hover ul li > div {}
+  鼠标悬浮div标签里的任意ul li无序列表子第一个级的div标签
+  body :active {}
+  body里的任意 鼠标点击元素
+  div:hover::after {}
+  鼠标悬浮div标签创建一个伪元素，作为已选中元素的最后一个子元素
+  ::selection {}
+  CSS伪元素应用于文档中被用户高亮的部分
+  :target {}
+  选择一个ID与当前URL片段匹配的元素
+  input + ul + p ~ span {}
+  input元素相邻的下一个ul元素相邻的下一个 p元素匹配同级span元素
+  ```
+
+34. 分别写出如下几个选择器的优先级
+    ```css
+    * * * {}
+    0,0,0,0
+    div * span {}
+    0,0,0,2
+    div[title] {}
+    0,0,1,1
+    fieldset legend + input {}
+    0,0,0,3
+    #some #thing .not:hover .abc:hover {}
+    0,2,4,0
+    ```
+
+35. `em,px,rem,vw,vh` 分别代表多长？
+    - em 代表自身字号的大小
+    - Px 代表像素点, 根据显示器分辨率决定
+    - Rem 代表根据根元素字号的大小
+    - Vw 代表相对于视窗的宽度决定
+    - vh 代表相对于视窗的高度决定
+36. 显示器的物理分辨率为 `1920x1080`，操作系统设置的分辨率为 `1280x720`，网页的放大倍数为 `110%`，请计算一个 CSS 像素对应多少个显示器物理像素（面积与长度）？2073600
+2073600/921600 = 2.25
+2.25 * 1.1 = 2.475
+
+37. 写出如下代码显示在浏览器后**每个单词**的字号
+    ```html
+    <style>
+      html {
+        font-size: 20px;
+      }
+      section {
+        font-size: 10rem;
+      }
+      p {
+        font-size: 24px;
+      }
+      span {
+        font-size: 150%;
+      }
+      .sucks {
+        font-size: inherit;
+      }
+    </style>
+    <body>
+      <section>
+        <h2>Brown</h2>
+        <p>quick</p>
+        <p>jumps <span>over <span>lazy</span> dog</span></p>
+        <p class="sucks">sucks</p>
+      </section>
+    </body>
+    ```
+
+    brown:320px
+    quick 24px
+    jumps 24px
+    over 36px
+    lazy 54px
+    dog 36px
+    sucks ?
+
+
+38. 如何给css添加注释
+/* 注释 */
+39. 指出如下css代码中的错误
+    ```
+    p,h1,{
+
+        background-color: rgba:(abc)  
+        font-varient; abc;            
+        colr: #ff048;                
+        font: "serif" 25px;            
+    }
+    ```
+- rgba后有冒号:,结尾没有分号;
+- rgba(abc)颜色色数值格式错误
+- font-varient后应该是冒号和具体对应的值
+- colr属性错误，应该是color
+- "serif" font语法错误，没有双引号
+- h1属性后没有,号
+
+40. 写出如下结构中div元素的所有后代/祖先/子/父/兄弟元素
+    ```html
+    <section>
+      <h1><span></span></h1>
+      <main>
+        <h2></h2>
+        <div>
+          <ul>
+            <li><a href=""><img src="" alt=""></a></li>
+          </ul>
+        </div>
+        <aside>
+          <h3></h3>
+        </aside>
+      </main>
+    </section>
+    ```
+-    div的后代元素是ul li a img
+-    div的兄弟元素是h2、aside元素
+-    div的父亲元素是main元素
+-    div的祖先元素是section元素
+
+41. 常见的替换元素有哪些？它们与非替换元素最大的区别什么？
+- 替换元素： img, input, textarea, select, object 
+- 最大的区别替换元素的内荣不是由文档内容直接展示
+
+42. 让 CSS 在 HTML 页面上生效有哪些方法，分别写出来。
+    - 直接嵌入 <style>
+    - 外部嵌入 <link>
+43. 如何让页面打印时应用不同的效果？
+- link标签设置media="print"属性来指定样式专门用于打印
+44. 假设 index.html 的路径为 http://user.coding.me/task/index.html ，如下引用的a.css和b.css路径分别为？
+    ```html
+    <!-- index.html的内容 -->
+    <style>
+        @import "../a.css";  a.css的路径是http://user.coding.me/a.css
+    </style>
+    ```
+    ```css
+    /* a.css的内容 */
+    @import "b.css";        b.css的路径是http://user.coding.me/task/b.css
+    ```
+
+45. 写出满足如下条件的选择器
+    * 第  8个子结点之后，倒数第 5 个子结点之前的li结点
+    - li:nth-child(n+8):nth-last-child(n+5)
+    * 【类名】以“damiao-”开头的元素
+    [class ^= "damiao-"]
+    - [rel*=" nofollow "]
+46. 链接伪类的几种状态书写的顺序是什么？为什么？
+一般按照link-visited-hover-active(LVHA)顺序，因为按照LVHA书写顺序，4个伪类不会冲突失效
+47. 如下 font 属性的值哪一个是书写正确的？
+    * font: serif 24px; 
+    * font: serif bold 24px/1.2; 
+    * font: bold 24px/1.2 serif; 正确
+48. 详述你对盒模型的理解。
+- 盒模型由margin-box,boder-box,padding-box,content-box.
+- 这四种盒子的宽高相加组成盒模型的水平距离和垂直距离。
+- 盒模型由box-sizing控制，一种是content-box,另一种是border-box.
+-   content-box模式width、height由content内容区的width、height决定
+-   border-box模式width、height有content、padding、margin的对应宽度、高度之和决定
+49. 元素的高度写百分比在什么情况下【无效】，为什么？在什么情况下【有效】，有效时是以哪个元素的高度为基准值？
+- 元素的高度写百分比在父亲元素高度值为数值时无效，因为数值情况下只继承结果。
+- 高度以祖先元素高度为基准
+50. 字体的 italic 与 obsolete 的区别是？
+51. 什么是模拟信号？什么是数字信号？它们的区别是？
+- 模拟信号是一种信号与信息的不断变化的物理量表示。数字信号是一种信号与自变量和因变量的分散。独立变量通常用整数表示的，而因变量的数量有限的数字表示。
+- 数字信号和模拟信号的区别是
+- 不同的数据必须转换为相应的信号才能进行传输：模拟数据（模拟量）一般采用模拟信号(Analog Signal)，例如用一系列连续变化的电磁波(如无线电与电视广播中的电磁波)，或电压信号(如电话传输中的音频电压信号)来表示；数字数据（数字量）则采用数字信号(Digital Signal)，例如用一系列断续变化的电压脉冲(如我们可用恒定的正电压表示二进制数1，用恒定的负电压表示二进制数0)，或光脉冲来表示。
+- 
+- 　　当模拟信号采用连续变化的电磁波来表示时，电磁波本身既是信号载体，同时作为传输介质；而当模拟信号采用连续变化的信号电压来表示时，它一般通过传统的模拟信号传输- 线路(例如电话网、有线电视网)来传输。 当数字信号采用断续变化的电压或光脉冲来表示时，一般则需要用双绞线、电缆或光纤介质将通信双方连接起来，才能将信号从一个节点传- 到另一个节点。
+52. 将如下 markdown 转换成 html
+    ```md
+    ## 四季变换
+
+    一年有四季，
+    四季有其对应的节气
+
+    * 春
+        - 立春
+        - 惊蛰
+        - 元宵
+    * 夏
+        - **小米**发布会
+        - 华为发布会
+    * 秋
+        - 开学了
+        - 军训了
+    * 冬
+        - 下雪了
+            + 打雪仗了
+        - 来暖气了
+        - 开空调了
+
+    > 知识就是力量，法国就是培根。
+
+    [春](http://baike.baidu.com/item/%E6%98%A5/6983693)
+    ![春](https://www.google.com.hk/images/nav_logo242_hr.png)
+    ```
+
+    ```html
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <title></title>
+          <style>
+            .quote{
+              padding:0 15px;
+              color:#777;
+              border-left:4px solid #ddd; 
+            }
+
+            *{
+              box-sizing:border-box
+            }
+
+            h1{
+              border-bottom:1px solid #eee;
+              padding-bottom:10px;
+            }
+
+            li{
+              list-style:none;
+            }
+
+            ul li{
+              list-style-type:circle;
+            }
+
+            ul li > ul li{
+              list-style-type:square;
+            }
+          </style>
+      </head>
+      <body>
+        <h1>四季变换</h1>
+        <div>一年有四季， 四季有其对应的节气</div>
+        <div>
+          <ul>
+            <li>春
+              <ul>
+                <li>立春</li>
+                <li>惊蛰</li>
+                <li>元宵</li>
+              </ul>
+            </li>
+            <li>夏
+              <ul>
+                <li>小米发布会</li>
+                <li>华为发布会</li>
+              </ul>
+            </li>
+            <li>秋
+              <ul>
+                <li>开学了</li>
+                <li>军训了</li>
+              </ul>
+            </li>
+            <li>冬
+              <ul>
+                <li>下雪了
+                  <ul>
+                    <li>打雪仗了</li>
+                  </ul>
+                </li>
+                <li>来暖气了</li>
+                <li>开空调了</li>
+              </ul>
+            </li>
+          </ul>  
+        </div>
+        <div class="quote">知识就是力量，法国就是培根。</div>
+        <a href="https://baike.baidu.com/item/%E6%98%A5/6983693">春</a>
+        <img src="https://www.google.com.hk/images/nav_logo242_hr.png" alt="">
+      </body>  
+      </html>
+    ```
+53. 如下表单提交后将跳转到什么地址
+    ```html
+    <form action="https://www.baidu.com/s" target="_blank">
+      <input type="text" value="bb" name="a">
+      <input type="checkbox" name="b" id="b" value="123" checked>
+      <input type="checkbox" name="b" id="b" value="456" checked>
+      <input type="checkbox" name="b" id="b" value="789">
+      <input type="radio" name="c" id="c" value="a2">
+      <input type="radio" name="c" id="c" value="a5" checked>
+      <input type="radio" name="c" id="c" value="a4">
+      <select name="select">
+        <option value="01">0001</option>
+        <option value="02">0002</option>
+        <option value="03" selected>0003</option>
+        <option value="04">0004</option>
+        <option value="05">0005</option>
+      </select>
+      <button>提交</button>
+    </form>
+    ```
+  -  www.baidu.com/s?a=bb&b=123&b=456&c=a5&select=03
+54. 列出 input 的 type 有哪些值，以及为各个值时分别需要怎么使用。
+- button	  可点击按钮
+- checkbox	复选框。
+- file	    输入字段和 "浏览"按钮，供文件上传。
+- hidden	  隐藏的输入字段。
+- image	    图像形式的提交按钮。
+- password	密码字段。该字段中的字符被掩码。
+- radio	    单选按钮。
+- reset	    重置按钮。重置按钮会清除表单中的所有数据。
+- submit	  提交按钮。提交按钮会把表单数据发送到服务器。
+- text	    单行的输入字段，用户可在其中输入文本。
+
+55. 想要让一个文本输入框在页面打开后自动获得光标要怎么办？
+- <input type="text" tabindex="1" autofocus>
+56. 如何在文本框里放置提示性文字？
+-  文本框title="提示性文字"
+57. option 标签的主体内容太长影响用户体验，你会如何解决？
+58. 想要在 textarea 标签中默认显示一段 html 代码最安全的做法是什么？
+- 把 < 等符号全部都替换成 &lt等 .
+59. 如何禁用一组输入框？
+-  <input type="text" disabled>
+60. 如下表格渲染出来后是什么效果？不要直接将代码贴入jsbin中看效果
+    ```html
+    <table border=1>
+      <caption>美国队长</caption>
+      <col>
+      <col bgcolor=red>
+      <col>
+      <colgroup bgcolor=pink>
+        <col>
+        <col>
+        <col bgcolor=brown>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>01</th>
+          <th>02</th>
+          <th>03</th>
+          <th>04</th>
+          <th>05</th>
+          <th>06</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>abc</td>
+          <td colspan=3 rowspan=2>abc</td>
+          <td>abc</td>
+          <td>abc</td>
+        </tr>
+        <tr>
+          <td>abc</td>
+          <td colspan=2 rowspan=3>abc</td>
+        </tr>
+        <tr bgcolor=lightgreen>
+          <td colspan=2 rowspan=2>abc</td>
+          <td>abc</td>
+          <td>abc</td>
+        </tr>
+        <tr>
+          <td>abc</td>
+          <td>abc</td>
+        </tr>
+      </tbody>
+    </table>
+    ```
+
+
+
+
+61. 写出如下标签或属性值的英文全称
+
+    标签：html,div,p,a,em,tr,th,td,col,ul,ol,li,dl,dt,dd,pre,nav
+
+    属性：coord,rect,poly,href,src
+
+62. 请说出你对命令行程序的理解，以及其与 GUI 程序的区别
+-  命令行程序可以在操作系统快速精准操作文件的增删改查操作，GUI程序以图形化界面提示用户文件如何擦欧总
+63. 请确认以下标签分别属性什么类别（Content Category）？
+    p, meta, h1, fieldset, option, input, area
+
+    - 元数据内容:  meta
+    - 流式内容: p, h1, input, area
+    - 表单内容: fieldset
+64. 解释 box-sizing 可以取哪些值，以及每个值的意义
+盒模型由box-sizing控制，一种是content-box,另一种是border-box.
+  content-box模式
+  border-box模式
+65. 简述 ie7 市场份额比 ie6 低的原因并在网络上找出目前各大浏览器在中国和全球的市场份额
+原因
+- 国企早些年预装正版XP，系统自带IE6
+- 银行网银网站的密码输入框一般采用了ActiveX控件，IE6集成这种技术。银行不愿意维护更新频率高的除IE的浏览器
+- 盗版GHOSTXP自带IE6
+- 份额
+- Chrome 78: 373
+- Firefox 71: 358
+- Safari 13: 320
+- Edge 18: 277
+
+66. 画出如下代码中 div 及其子元素的渲染结果，并指出 p 标签中【每个行内元素的，内容区，行内框的范围】，p 元素的行框，并指明理论的行框高度。有尺子的可以以 1mm 为 2px 来绘制。
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>JS Bin</title>
+      <style>
+        p {
+          font-size: 20px;
+          line-height: 120%;
+          margin: 30px;
+          margin-left: auto;
+          margin-right: -20px;
+          width: 300px;
+          background-color: tan;
+        }
+
+        .a {
+          display: inline-block;
+        }
+
+        .b {
+          font-size: 30px;
+          vertical-align: 15px;
+        }
+
+        .c {
+          display: inline-block;
+          width: 60px;
+          height: 60px;
+          background-color: pink;
+          margin: 8px;
+        }
+
+        img {
+          box-sizing: border-box;
+          width: 50px;
+          height: 50px;
+          border: 2px solid;
+          margin: 4px;
+          vertical-align: -10px;
+          margin-bottom: -5px;
+        }
+        div {
+          width: 400px;
+          border: 1px dotted;
+        }
+      </style>
+    </head>
+    <body>
+      <div>
+        <p>
+          <span class=a>foo</span>
+          <span class=b>bar</span>
+          <span class=c></span>
+          <img src="https://drscdn.500px.org/photo/205228769/m%3D1170_k%3D1/d721302d063d447aa3bd6301dc1cba87" alt="">
+        </p>
+      </div>
+    </body>
+    </html>
+    ```
