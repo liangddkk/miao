@@ -131,7 +131,7 @@
   console.log(Math.pow(2,n));
 </script>
 
-<script type="x"   id="ch0101/20">
+<script type="x"   id="ch0101/21">
   var n = +prompt();
   isNaN(n);
   for(var a = 20;;a++){
@@ -245,7 +245,7 @@
 
 <script type="x" id="ch0104/09">
   var a = +prompt();
-  if(a % 3 == 0 && a % 5 == 0 && a % 7 == 0){
+  if(a % 105 == 0){
     console.log(3+" "+5+" "+7);
   }else if(a % 15 == 0){
     console.log(3+" "+5);
@@ -261,7 +261,18 @@
 <script type="x" id="ch0104/10">
   var a = +prompt();
   var b = +prompt();
-  if(a < 60 || b < 60){
+  var count = 0;
+  if(a < 60 ){
+    count = count + 1;
+  }
+
+  if(b < 60 ){
+    count = count + 1;
+  }
+
+  
+  //若该生恰好有一门课不及格，输出1；否则输出0。
+  if(count == 1){
     console.log(1);
   }else{
     console.log(0);
@@ -278,14 +289,18 @@
 </script>
 
 <script type="x" id="ch0104/12">
+  //a =100,输出 all
+  // a > 100 ,bike.a = 100,all.a < 200,all
   var a = prompt();
   if((50 + a / 3) < (a / 1.2)){
     console.log("Bike");
-  }else if((50 + a / 3) == (a / 3)){
+  }else if((50 + a / 3) == (a / 1.2)){
     console.log("all");
   }else{
     console.log("Walk");
   }
+
+  
 </script>
 
 <script type="x" id="ch0104/13">
@@ -305,12 +320,13 @@
 <script type="x" id="ch0104/14">
   var a = +prompt();
   var b;
-  //是否加急
+  //是否加急字段
   var c = prompt();
   var d;
+  //if(a <= 1000){}可以简写，直接if(a > 1000)
   if(a <= 1000 ){
     b = 8;
-  }else if(a > 1000){
+  }else{
     d = +Math.ceil((a - 1000) / 500);
     b = 8 + d * 4;
   }
@@ -319,13 +335,6 @@
     b = b + 5;
   }
   console.log(b);
-</script>
-
-<script type="x" id="ch0104/14">
-  var a = +prompt();
-  var b = +prompt();
-  var c = +prompt();
-  console.log(Math.max(a,b,c));
 </script>
 
 <script type="x" id="ch0104/15">
@@ -429,4 +438,675 @@
   var y = +prompt();
   console.log(n - Math.ceil(y / x));
 </script>
+
+
+<script type="x" id="ch0104/22">
+  //生成随机数
+  var num = Math.round(Math.random() * 100);
+  //用户随机输入数字，回复大小
+  while (a != num) {
+    var a = +prompt("请输入随机数字");
+    if (a < num) {
+      alert("输入数字小了");
+    }else if(a > num){
+       alert("输入数字大了");
+    }else{
+       alert("你猜中数字了");
+    }
+  }
+
+</script>
+
+<script type="x" id="ch0105/01">
+  // 学生数
+  var n = +prompt("输入学生数");
+  //总年龄
+  var numAge = 0;
+  //个体学生年龄
+  var age;
+  var i;
+  for(i = 0;i < n;i++){
+    age = +prompt("输入年龄");
+    numAge += age;
+  }
+  console.log((+numAge / n).toFixed(2));
+</script>
+
+<script type="x" id="ch0105/02">
+  //财务管理
+  var num;
+  var aveNum = 0
+  for(i = 0;i < 12;i++){
+    num = +prompt("输入每月的月末结余");
+    aveNum += num;
+  }
+  console.log("$"+(aveNum / 12).toFixed(2));
+</script>
+
+<script type="x" id="ch0105/03">
+  //均值
+  //样本容量n
+  var n = +prompt("输入样本容量");
+  var num;
+  var aveNum = 0
+  for(i = 0;i < n;i++){
+    num = +prompt("输入样本数据");
+    aveNum += num;
+  }
+  console.log((aveNum / n).toFixed(4));
+</script>
+
+<script type="x" id="ch0105/04">
+  var n = +prompt("输入整数个数");
+  var num;
+  var aveNum = 0
+  for(i = 0;i < n;i++){
+    num = +prompt("输入整数数据");
+    aveNum += num;
+  }
+  console.log(aveNum+" "+(aveNum / n).toFixed(5));
+</script>
+
+<script type="x" id="ch0105/05">
+  //var max = -Infinity;
+  var n = +prompt("输入参加考试的人数");
+  var max = +prompt("输入成绩");  //计算最大值
+  for(i = 0;i < n - 1;i++){
+    var grade = +prompt("输入成绩");
+    if(max < grade){
+      max = grade;
+    }
+  }
+  console.log(max);
+</script>
+
+<script type="x" id="ch0105/06">
+  //整数序列的元素最大跨度值
+  var n = +prompt("输入序列个数");
+  var max = +prompt("输入序列");  //计算最大跨度值
+  min = max;                     //计算最小值关键值
+  for(i = 0;i < n - 1;i++){
+    var grade = +prompt("输入跨度");
+    if(max < grade){
+      max = grade;
+    }
+    if(min > grade){
+      min = grade;
+    }
+  }
+  console.log(max-min);
+</script>
+
+<script type="x" id="ch0105/07">
+  var n = +prompt("A国参与决赛项目的天数");
+  var goldNum = 0;
+  var silverNum = 0;
+  var copperNum = 0;
+  for(i = 0;i < n ;i++){
+    goldNum += +prompt("金牌数");
+    silverNum += +prompt("银牌数");
+    copperNum += +prompt("铜牌数");
+  }
+  var totolNum = goldNum + copperNum +silverNum;
+  console.log(goldNum,silverNum,copperNum,totolNum);
+</script>
+
+<script type="x" id="ch0105/08">
+  var n = +prompt("n边形");
+  var surAngleNum = 0;//剩余内角
+  var knowAngle;//已知内角
+  var totalAngle = (n - 2) * 180; //多边形内角和
+  for(i = 0;i < n-1 ;i++){
+    knowAngle = +prompt("内角角度");
+    surAngleNum += knowAngle;
+  }
+  surAngle = totalAngle - surAngleNum;
+  console.log(surAngle);
+</script>
+
+<script type="x" id="ch0105/09">
+  //求奇数之和
+  var m = +prompt("m");
+  var n = +prompt("n");
+  var num = 0;
+  for(;m <= n ;m++){
+    //效率太慢
+    if(m % 2 != 0){
+      num += m;
+    }
+  }
+  console.log(num);
+</script>
+
+<script type="x" id="ch0105/10">
+  var m = +prompt("m");
+  var n = +prompt("n");
+  var num = 0;
+  for(;m <= n ;m++){
+    if(m % 17 == 0){
+      num += m;
+    }
+  }
+  console.log(num);
+</script>
+
+<script type="x" id="ch0105/11">
+  //整数的个数
+  var k = +prompt("k");
+  var num = 0;
+  var num5 = 0;
+  var num10 = 0;
+  for(var i = 0;i < k ;i++){
+    var n = +prompt("输入的正整数");
+    if(n == 1){
+      num++;
+    }else if(n == 5){
+      num5++;
+    }else if(n == 10){
+      num10++;
+    }
+  }
+  console.log(num);    
+  console.log(num5);    
+  console.log(num10);    
+</script>
+
+<script type="x" id="ch0105/12">
+  var N = +prompt("整数序列的长度");
+  var number = +prompt("指定的数字");
+  var count = 0;
+  for(var i = 0;i < N ;i++){
+    var n = +prompt("输入的正整数");
+    if(number == n){
+      count++;
+    }
+  }
+  console.log(count);    
+</script>
+
+<script type="x" id="ch0105/13">
+  //与指定数字相同的数的个数
+  var N = +prompt("整数");
+  var number = +prompt("正整数");
+  var total = 1;
+  for(var i = 0;i < number ;i++){
+    total = total * N;
+  }
+  console.log(total);    
+</script>
+
+<script type="x" id="ch0105/14">
+  var peopleNum = +prompt("人数");
+  var year = +prompt("年份");
+  for(var i = 0;i < year ;i++){
+    peopleNum = 1.001  * peopleNum;
+  }
+  console.log(peopleNum.toFixed(4));    
+</script>
+
+<script type="x" id="ch0105/15">
+  var countRate = +prompt("复合年利率");
+  var count = +prompt("金钱");
+  var year = +prompt("年份");
+  for(var i = 0;i < year ;i++){
+    count = (1 + 0.01 * countRate) * count;
+  }
+  console.log(Math.trunc(count));    
+</script>
+
+
+<script type="x" id="ch0105/16">
+  var N = +prompt("年薪");
+  var K = +prompt("年份");
+  var totalK = 200;//每年房价
+  var count = 0;//第几年
+  for(var i = 1;i < K ;i++){
+    totalK = (1 + 0.01 * K) * totalK;
+    N = N + 50;
+    if(N > totalK){
+      console.log(i+1);  
+      break;
+    }  
+  }
+
+</script>
+
+
+
+<script type="x" id="ch0105/17">
+  var k = +prompt();
+    var m = 1;
+    var n = 1;
+    for(var i = 3; i <= k; i++){
+      //这段代码一致在迭代
+      var l = m + n;
+      n = m;
+      m = l;
+    }
+    console.log(l);
+</script>
+
+<script type="x" id="ch0105/18">
+  //鸡尾酒疗法
+    var n = +prompt("案例数");
+    var total =  +prompt("案例的总病例数");
+    var goodNum = +prompt("有效的病例数");
+    var x = goodNum / total;
+    var y;
+    
+    for(var i = 1;i <= n-1;i++){
+      var ytotal =  +prompt("案例的总病例数");
+      var ygoodNum = +prompt("有效的病例数");
+      y = ygoodNum / ytotal;
+      if(y - x > 0.05){
+        console.log("better");
+      }else if(x - y > 0.05){
+        console.log("worse");
+      }else{
+        console.log("same");
+      }
+    }
+</script>
+
+<script type="x" id="ch0105/19">
+    //救生营案例
+    var n = +prompt("屋顶数");
+    for(var i = 1;i <= n;i++){
+      var x = +prompt("救援坐标轴x");
+      var y = +prompt("救援坐标轴y");
+      var p = +prompt("人数");
+      var distance = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+      var toatalMin = distance / 50 * 2 + 1 * p + p * 0.5;
+      console.log(Math.ceil(toatalMin));
+    }
+</script>
+
+<script type="x" id="ch0105/20">
+  //弹球案例
+  var h = +prompt("弹球初始高度");
+  var x = +prompt("弹球次数");
+  var l = h;
+  for(var i = 1;i <= x;i++){
+    var h = 0.5 * h ;
+    if(i < x){
+    //实际已经第二次了
+     l += 2 * h;
+
+    }
+  }
+    console.log(l.toFixed(4));
+    console.log(h.toFixed(7));
+</script>
+
+<script type="x" id="ch0105/21">
+  //角谷猜想
+  var n = +prompt("角谷猜想数字");
+  for(var i = 1;;i++){
+    if(n % 2 != 0 && n != 1){
+      n = n * 3 + 1;
+      console.log((n-1)/3+"*3+1="+n);
+    }else if(n % 2 == 0){
+      n = n / 2;
+      console.log((n*2)+"/2="+n);
+    }else if(n == 1 || n == 0){
+      console.log("End");
+      break;
+    }
+  }
+</script>
+
+<script type="X" id="ch0105/22">
+  var x = 0;
+  var y;
+  var s = 0;
+  var ls = 0;
+  //x为月尾剩下的钱
+  //y表示每月的花费
+  //s为存下来的钱
+  for(var i = 1;i <= 12;i++){
+    y = +prompt("每月的花费");
+    x += 300;//月头
+    if(y > x){//每月花费超资，计划结束
+      ls = 1;
+      break;
+    }else {//本月不超资，可能存钱
+      x -= y;//先减去预算
+      if(x >= 100){//大于100的钱存整百的钱
+        s += (x - x%100);//存整百的钱
+        x = x%100;//余款放到下个月 
+      }
+    }
+  }
+  if(ls == 0){
+    console.log(s * 1.2 + x);//存钱和零钱累加
+  }
+</script>
+
+<script type="z" id="ch0105/23">
+  var m = +prompt("每天开始时的药品总量");
+  var n = +prompt("取药的人数");
+  var s = 0;
+  var count = 0;
+  //n为取药的人数
+  //m表示药物的总量
+  //s表示病人取的药总量
+  //count表示药房系统拒绝的人数
+  for(var i = 1;i <= n;i++){
+    var a = +prompt("每个病人希望取走的药品数量");
+    s += a;
+    if (s > m) {
+      count += 1;//记录次数
+      s -= a;//药物退回
+      continue;//继续下一轮的循环
+    }
+  }
+  console.log(count);//输出拒绝人数总量
+</script>
+
+<script type="x" id="ch0105/24">
+  var s = +prompt("一天测试几次血压");
+  var count = 0;
+  //count表示保持正常血压的最长小时数
+  for(var i = 1;i <= s;i++){
+    var m = +prompt("收缩压");
+    var n = +prompt("舒张压");
+    if ((m > 90 && m < 140)&&(n >= 60 && n <= 90)) {
+      count++;
+    }
+  }
+  console.log(count);//输出血压正常小时数
+</script>
+
+<script type="x" id="ch0105/25">
+  for(var i = 1;;){
+    var s = +i.toString(7);//特殊自然数的七进制数
+    var n = i.toString(9);//特殊自然数的九进制数
+    var b = Math.trunc((s - 100) % 10);//七进制个位
+    var c = Math.trunc((s - 100 * Math.trunc(s / 100)) / 10);//七进制十位
+    var d = Math.trunc(s / 100);//七进制百位
+    if ((""+b+c+d) == n) {
+      console.log(i);
+      console.log(s);
+      console.log(n);
+      break;
+    }
+    i++;
+  }
+</script>
+
+<script type="x" id="ch0105/26">
+  var n = +prompt("给定若干个四位数");
+  var count = 0;//记录满足四位数的个数
+  for(var i = 1;i <= n;i++){
+    var a = +prompt("输入四位数");
+    var b = Math.trunc((a - 100) % 10);//个位
+    var c = Math.trunc((a - 100 * Math.trunc(a / 100)) / 10);//十位
+    var e = Math.trunc(a / 1000);//千位
+    var d = Math.trunc((a - 1000 * e) / 100);//百位
+    if ((b - e - d - c) > 0) {
+      count++;
+    }
+  }
+  console.log(count);//记录满足四位数的个数
+</script>
+
+<script type="x" id="ch0105/27">
+  //级数求和案例
+  var k = +prompt("输入一个整数");
+  var sn = 1 / n; //sn表示级数
+  for(var n = 1;;n++){
+    if(n == 1){
+      sn = 1 / n;
+    }else{
+      sn++;
+    }
+    if (sn > k) {//当sn > k时
+      console.log(n);//输出n
+      break;
+    }
+  }
+</script>
+
+<script type="x" id="ch0105/28">
+  //分离整数
+  var n = +prompt("输入一个整数");
+  for(;;){
+    if(n > 0 ){
+        console.log(Math.floor(n%10));//取余数
+        n /= 10;//不断循环除求最小数
+    }else{
+      break;
+    }
+  }
+</script>
+
+<script type="x" id="ch0105/29">
+  debugger
+  //数字反转
+  var n = +prompt("输入一个整数");
+  var a = n +"";//判断是否是第一个n
+  var b = "";
+  var ls = 0;
+    for(;;){
+      if(a == n && Math.trunc(n%10) != 0){
+        b += Math.trunc(n%10);//字符拼接
+      }else if(n < 0 && (b.length < n.length)){
+        b += -Math.trunc(n%10);
+      }else if(n >0 && (b.length < n.length)){
+        b += Math.trunc(n%10);
+      }else{
+        break;
+      }
+      n /= 10;//不断循环除求最小数
+    }
+  console.log(b);
+</script>
+
+<script type="x" id="ch0105/30">
+  //数字反转
+  //不知道长度的数位分离+统计
+  var n = +prompt("整数m");
+  var k = +prompt("整数n");
+  var ls = 0; //判断关键值
+  if(n%19 != 0){
+    ls = 1;
+  }else{
+    while (n > 0) {
+      if(Math.trunc(n%10) == 3){
+        k--;//找到k值减去1
+      }
+      n /= 10;//一直循环跳出n >0选好
+    }
+    if(k != 0){
+      ls == 1;
+    }
+    if(ls == 0){
+      console.log("YES");//能被19整除且有K个3
+    }else{
+      console.log("NO");//
+    }
+  }
+</script>
+
+<script type="x" id="ch0105/33">
+  //计算分数加减表达式的值
+  var n = +prompt("整数");
+  var sn = 0;//分数表达式
+  for(var i = 1;i <=n ;i++){
+    if(i % 2 != 0){
+      sn += 1/i;
+    }else{
+      sn -= 1/i;
+    }
+  }
+  console.log(sn);
+</script>
+
+<script type="x" id="ch0105/34">
+  //求阶乘的和
+  var n = +prompt("阶乘个数");
+  var sn = 1;//阶乘和
+  var bn = 0;
+  var b = 1;
+  for(var i = 1;i <=n ;i++){
+    sn = 1;
+    for(var j = 1;j <= i;j++){
+      sn *=  j
+    }
+    bn += sn;
+  }
+  console.log(bn)
+</script>
+
+<script type="z" id="ch0105/35">
+  //求出e的值
+  var n = +prompt("阶乘个数");
+  var sn = 1;//阶乘和
+  var bn = 0;
+  var b = 1;
+  for(var i = 1;i <=n ;i++){
+    sn = 1;
+    for(var j = 1;j <= i;j++){
+      sn *=  1/j
+    }
+    bn += sn;
+  }
+  console.log((bn+1).toFixed(10))
+</script>
+
+<script type="x" id="ch0105/36">
+  //计算多项式的值
+  var x = +prompt("多项式x");
+  var n = +prompt("多项式n");
+  var bn = 0;
+  for(var i = 0;i <=n ;i++){
+    bn += Math.pow(x,i);
+  }
+  console.log(bn.toFixed(2))
+</script>
+
+<script type="x" id="ch0105/39">
+  //与7无关的数
+  var n = +prompt("多项式n");
+  var bn = 0;
+  var flag = 0;
+  for(var i = 1;i <=n ;i++){
+    var a = i;
+    flag = 0;
+    while(i > 0){
+      var digit = i % 10; 
+      if(digit == 7){
+        flag = 1;
+        break;
+      }
+      i = (i - digit)/10;
+    }
+    i = a;
+    if(flag == 0 && a % 7 != 0){
+      bn += Math.pow(a,2);
+    }
+  }
+  console.log(bn)
+</script>
+
+<script type="x" id="ch0105/40">
+  //数1的个数
+  var n = +prompt("多项式n");
+  var flag = 0;
+  var count = 0;
+  for(var i = 1;i <=n ;i++){
+    var a = i;
+    flag = 0;
+    while(i > 0){
+      var digit = i % 10; 
+      if(digit == 1){
+        count++;
+      }
+      i = (i - digit)/10;
+    }
+    i = a;
+  }
+  console.log(count)
+</script>
+
+
+<script type="x" id="ch0105/42">
+  //找出第n个质数
+  //是素数,因为2只能被1和它自己本身整除
+  var x = +prompt("矩形x")
+  var y = +prompt("矩形y");
+  var a = prompt("矩形字符");
+  var c= "\n";
+  var b = +prompt("是否实心");
+  for(var i = 1;i<=x;i++){
+      for (j = 1; j <= y; j++){
+        if(b == 1){
+          if(j == x){
+            c += a +"\n"
+          }else{
+            c += a;
+          }
+        }else if(b == 0){
+            if((i > 1 && i < x) && (j > 1 && j < y)){
+              c += " ";
+             }else{
+               if(j == x){
+                c += a +"\n"
+               }else{
+                c += a;
+               }
+             }
+        }
+      }
+  }
+</script>
+
+<script type="x" id="ch0105/44">
+  //找出第n个质数
+  //是素数,因为2只能被1和它自己本身整除
+  var n = +prompt("多项式n");
+  var flag = 0;
+  var count = 0;
+  for(var i = 2;;i++){
+    var c = 2;
+    while(c <= i){
+      if (i % c != 0 && i != c || i == 2) {
+        flag = 1;
+      }else{
+        break;
+      }
+      c++;
+      if(flag == 1 && c == i ||i == 2){
+        count++;
+      }
+    }
+    if(count == n){
+      console.log(i);
+      break;
+    }
+  }
+</script>
+
+<script type="x" id="ch0105/45">
+  //金币
+  var n = +prompt("天数次数");
+  var s = 0;//s为增加金币次数
+  var t=1;//t为该时间段
+  var a=1;//a为每一时间段可增加金币的数量
+  var count = 0;
+  while (s<n) {
+    for(var i = 1;i <= t;i++){
+      count += a;
+      s++;
+      if(s>n){
+        break;
+      }
+    }
+    t++;
+    a++;
+  }
+  console.log(count);
+</script>
+
+
 
