@@ -52,7 +52,7 @@ var liangddkk = {
    * @param {Array} Array
    * @return {Array}
    */
-  concat: function(array){
+  compact: function(array){
     let ans = [];
     for(let i = 0;i < array.length;i++){
       if(array[i]){
