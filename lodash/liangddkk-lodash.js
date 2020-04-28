@@ -27,7 +27,7 @@ var liangddkk = {
    * 以size拆分成数组块，并返回由这些数组组成的数组
    * @param {Array} Array
    * @param {Number} size
-   * @return {Boolean}
+   * @return {Array}
    */
   chunk: function(array,size = 1){
     if(array.length == 0){
@@ -44,6 +44,20 @@ var liangddkk = {
         ans[cns] = [];
       }
       ans[cns][i % size] = array[i];
+    }
+    return ans;
+  },
+  /**
+   * 创建一个新数组，返回原数组中所有的非假值元素
+   * @param {Array} Array
+   * @return {Array}
+   */
+  concat: function(array){
+    let ans = [];
+    for(let i = 0;i < array.length;i++){
+      if(array[i]){
+        ans[ans.length] = array[i]
+      }
     }
     return ans;
   }
