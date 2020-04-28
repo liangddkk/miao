@@ -29,7 +29,7 @@ var liangddkk = {
    * @param {Number} size
    * @return {Boolean}
    */
-  chuck: function(array,size = 1){
+  chunk: function(array,size = 1){
     if(array.length == 0){
       return [];
     }
