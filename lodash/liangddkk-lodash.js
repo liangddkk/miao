@@ -198,5 +198,173 @@ var liangddkk = {
    */
   last: function(array){
     return array[array.length - 1];
+  },
+  /**
+  * 从某个起始值从右往左，返回第一个出现val的下标
+  * @param {Array} array 
+  * @param {Number} val 
+  * @param {Number} fromIndex 
+  */
+ lastIndexOf: function(array,val,fromIndex = array.length - 1){
+   for(let i = fromindex;i >= 0;i--){
+    if(array[i] === val ||(val !== val && array[i] !==array[i])){
+      return i;
+    }
+    return -1;
+   }
+ },
+ /**
+  * 获取array数组的第n个元素。如果n为负数，则返回从数组结尾开始的第n个元素。
+  * @param {Array} array 
+  * @param {Number} n 
+  */
+ nth: function(array,n = 0){
+  if(n >= 0){
+    return array[n];
+  }else{
+    return array[array.length + n];
+  }
+ },
+ /**
+  * 移除数组array中所有和给定值相等的元素
+  * @param {Array} array 
+  * @param  {...any} args 
+  * @returns {Array}
+  */
+ pull: function(array,...args){
+  let map = {};
+  let ans = [];
+  for(let i in args){
+    map[args[i]] = true;
+  }
+  for(let i in array){
+    if(!map[array[i]]){
+      ans[ans.length] = array[i];
+    }
+  }
+  array = [];
+  for(let i in ans){
+    array[i] = ans[i];
+  }
+  return array;
+ },
+ /**
+  * 移除数组array中所有和给定值相等的元素, 函数接受两个数组参数
+  * @param {Array} array 
+  * @param {Array} values 
+  * @returns {Array}
+  */
+ pullAll: function(array,values){
+  let map = {};
+  let ans = [];
+  for(let i in values){
+    map[value[i]] = true;
+  }
+  for(let i in array){
+    if(!map[array[i]]){
+      ans[ans.length] = array[i];
+    }
+  }
+  array = [];
+  for(let i in ans){
+    array[i] = ans[i];
+  }
+  return array;
+ },
+ /**
+  * 根据索引 indexes，移除array中对应的元素，并返回被移除元素的数组。
+  * @param {Array} array 
+  * @param  {...any} args 
+  */
+  pullAt: function(array,...values){
+    let map = {};
+    let ans = [];
+    for(let i in values){//i为"0"开头
+      map[values[i]] = true;
+    }
+    for(let i in array){
+      if(!map[i]){
+        ans[ans.length] = array[i];
+      }
+    }
+    return ans;
+  },
+  /**
+   * 反转array，使得第一个元素变为最后一个元素，第二个元素变为倒数第二个元素，依次类推
+   * @param {Array} array
+   * @returns {Array} 
+   */
+  reverse: function(array){
+    let left = 0;
+    let right = array.length - 1;
+    while(left < right){
+      let tmp = array[right];
+      array[left] = array[right];
+      array[right] = tmp;
+      left++;
+      righ--;
+    }
+    let ans = [];
+    for(let i in array){
+      ans[i] = array[i];
+    }
+    return ans;
+  },
+  /**
+   * 裁剪数组array，从 start 位置开始到end结束
+   * @param {Array} array 
+   * @param {Number} start 
+   * @param {Number} end 
+   * @returns {Array}
+   */
+  slice: function (array,start = 0,end = array.length) {
+    let ans = [];
+    for(let i = start;i < end;i++){
+      ans[ans.length] = array[i];
+    }
+    return ans;
+  },
+  /**
+   * 用二分法在原排序数组中查找val应该插入的下标值
+   * @param {Array} array 
+   * @param {Number} val
+   * @returns {Number} 
+   */
+  sortedIndex: function (array,val){
+    let low = 0;
+    let high = array.length - 1;
+    if(val > array[high]){
+      return array.length;
+    }
+    while(low < high){
+      //取整
+      let mid = Math.floor((low + high) / 2);
+      if(array[mid] < val){
+        low = mid + 1;
+      }else{
+        high = mid - 1;
+      }
+    }
+    return low;
+  },
+  sortedIndexOf: function(array,val) {
+    let low = 0;
+    let high = array.length - 1;
+    if(val > array[high]){
+      return array.length;
+    }
+    while(low < high){
+      let mid = Math.floor((low + high) / 2);
+      if(array[mid] < val){
+        low = mid + 1;
+      }else{
+        high = mid;
+      }
+    }
+    if(low >= array.length || array[low] != val){
+      return -1;
+    }
+    return low;
   }
 }
+    
