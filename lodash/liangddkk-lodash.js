@@ -361,10 +361,115 @@ var liangddkk = {
         high = mid;
       }
     }
-    if(low >= array.length || array[low] != val){
+    if(low >= array.length){
       return -1;
     }
     return low;
-  }
+  },
+  /**
+   * 获取除了array数组第一个元素以外的全部元素
+   * @param {Array} array
+   * @returns {Array} 
+   */
+  tail: function(array){
+     let ans = [];
+     for(let i = 1;i < array.length;i++){
+      ans[ans.length] = array[i];
+     }
+     return ans;
+   },
+   /**
+    * 从array数组的起始元素开始提取n个元素
+    * @param {Array} array 
+    * @param {Number} n
+    * @returns {Array} 
+    */
+   take: function(array,n = 1){
+     let ans = [];
+     for(let i = 0;i < n;i++){
+    // if(i >= array.length){
+    //   break;
+    // }
+      ans[ans.length] = array[i];
+     }
+     return ans;
+   },
+   /**
+    * 从array数组的最后一个元素开始提取n个元素
+    * @param {Array} array 
+    * @param {Number} n
+    * @returns {Array} 
+    */
+   takeRight:function(array,n = 1){
+     let ans = [];
+     for(let i = array.length - n;i < array.length;i++){
+       //防止i小于0
+      if(i < 0){
+        continue;
+      }
+      ans[ans.length] = array[i];
+     }
+     return ans;
+   },
+   /**
+    * 返回一个并集
+    * @param  {...any} arrays 
+    */
+   union: function(...array){
+     let map = {};
+     let ans = [];
+     for(let i in array){
+      for(let j in array[i]){//多维数组没有值就不遍历了
+        if(!map[array[i][j]]){
+            map[array[i][j]] = true;
+            ans[ans.length] = array[i][j];
+        }
+      }
+     }
+     return ans;
+   },
+   /**
+    * 数组去重
+    * @param {Array} array 
+    * @returns {Array}
+    */
+   uniq: function(array){
+     let map = {};
+     let ans = [];
+     for(let i in array){
+      if(!map[array[i]]){
+        map[array[i]] = true;
+        ans[ans.length] = array[i];
+      }
+     }
+     return ans;
+   },
+   /**
+     * 一个分组元素的数组，数组的第一个元素包含所有给定数组的第一个元素，数组的第二个元素包含所有给定数组的第二个元素，以此类推
+     * @param  {...Array} arrays
+     * @returns {Array} 
+     */
+    zip: function(...array){
+      let ans = [];
+      ans[0] = [];
+      let cnt = 0;
+      let maxLen = 0;
+      for(let i in array){
+        maxLen = (maxLen > array[i].length ? maxLen:array[i].length);
+      }
+      for(let j = 0;j < maxLen;j++){
+        ans[cnt] = [];
+        for(let i in array){
+          ans[cnt][ans[cnt].length] = array[i][cnt];
+        }
+        cnt++;
+      }
+      return ans;
+    },
+    /**
+     * 返回数组字符串或者对象的长度或者键值对的数量
+     * @param {Array/Object} values 
+     * @returns {Number}
+     */
 }
     
