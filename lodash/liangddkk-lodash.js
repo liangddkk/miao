@@ -471,5 +471,149 @@ var liangddkk = {
      * @param {Array/Object} values 
      * @returns {Number}
      */
+    size: function(value){
+      //如果集合是类数组或字符串，返回其length
+      if(Array.isArray(value) || typeof(value) === 'string'){
+        return value.length;
+      }else if(Object.prototype.toString.call === '[object Object]'){
+        //如果集合是对象，返回其可枚举属性的个数
+        let cnt = 0;
+        for(let i in value){
+          cnt++;
+        }
+        return cnt;
+      }
+    },
+    /**
+     * 根据precision向下舍入 number
+     * @param {Number} num 
+     * @param {Number} precision 
+     * @returns {Number}
+     */
+    floor: function(num,precision = 0){
+      //先乘
+      let ans = Math.pow(10,precision) * num;
+      //向下取整
+      ans = Math.floor(ans);
+      //后除
+      ans /= Math.pow(10,precision);
+      return ans;
+    },
+    /**
+     * 返回数组中的最大值 
+     * @param {Array} array 
+     * @returns {Number}
+     */
+    max: function(array){
+      if(array == null || array.length == 0){
+        return undefined;
+      }
+      let ans = -Infinity;//最小值
+      for(let i in array){
+        ans = ans < array[i] ? ans : array[i];
+      }
+      return ans;
+    },
+    /**
+     * 返回数组中的最小值 
+     * @param {Array} array 
+     * @returns {Number}
+     */
+    min: function(array){
+      if(array == null || array.length == 0){
+        return undefined;
+      }
+      let ans = Infinity;//最大值
+      for(let i in array){
+        ans = ans < array[i] ? ans : array[i];
+      }
+      return ans;
+    },
+    /**
+     * 返回数组的平均值 
+     * @param {Array} array 
+     * @returns {Number}
+     */
+    mean: function(array){
+      if(array == null || array.length == 0){
+        return undefined;
+      }
+      let s = 0;
+      for(let i in array){
+        s += array[i];
+      }
+      return s / array.length;
+    },
+    /**
+     * 根据precision四舍五入 number
+     * @param {Number} num 
+     * @param {Number} precision 
+     */
+    round: function(num,precision = 0){
+      let ans = Math.pow(10,precision) * num;
+      ans = Math.round(ans);
+      ans /= Math.pow(10,precision);
+      return ans;
+    },
+    /**
+     * 返回数组的总和 
+     * @param {Array} array 
+     * @returns {Number}
+     */
+    sum: function(array){
+        if(array == null || array.length == 0) return undefined;
+        let s = 0;
+        for(let i in array){
+            s += array[i];
+        }
+        return s;
+    },
+    /**
+     * 返回两数相除的商
+     * @param {Number} dividend 
+     * @param {Number} divisor
+     * @returns {Number} 
+     */
+    divide: function(dividend, divisor){
+        return dividend / divisor;
+    },
+    /**
+     * 返回两数相加的和
+     * @param {Number} augend 
+     * @param {Number} addend 
+     * @returns {Number} 
+     */
+    add: function(augend, addend ){
+        return augend + addend;
+    },
+    /**
+     * 根据precision向上舍入 number
+     * @param {Number} num 
+     * @param {Number} precision 
+     */
+    ceil: function(num, precision = 0){
+        let ans = Math.pow(10, precision) * num;
+        ans = Math.ceil(ans);
+        ans /= Math.pow(10, precision);
+        return ans;
+    },
+    /**
+     * 返回两数相乘的积
+     * @param {Number} augend 
+     * @param {Number} addend 
+     * @returns {Number} 
+     */
+    add: function(augend, addend ){
+        return augend + addend;
+    },
+    /**
+     * 返回两数相减的差
+     * @param {Number} minuend  
+     * @param {Number} subtrahend  
+     * @returns {Number} 
+     */
+    subtract: function(minuend , subtrahend  ){
+        return minuend  - subtrahend;
+    }
 }
     
