@@ -614,6 +614,98 @@ var liangddkk = {
      */
     subtract: function(minuend , subtrahend  ){
         return minuend  - subtrahend;
-    }
+    },
+    /**
+     * 除了它接收分组元素的数组，并且创建一个数组，分组元素到打包前的结构
+     * @param  {Array} array
+     * @returns {Array} 
+     */
+    unzip:function(array){
+      let ans = [];
+      ans[0] = [];
+      let cnt = 0;
+      let maxLen = 0;
+      for(let i = 0;i < array.length;i++){
+        maxLen = maxLen > array[i].length ? maxLen : array[i].length;
+      }
+      for(let j = 0;j < maxLen;j++){
+        ans[cnt] = [];
+        for(let i = 0;i < array.length;i++){
+          ans[cnt][ans[cnt].length] = array[i][cnt];
+        }
+        cnt++;
+      }
+      return  ans;
+    },
+    /**
+     * 返回一个去掉后n项的数组
+     * @param {Array} array 
+     * @param {Number} n 
+     * @returns {Array}
+     */
+    dropRight: function(array,n = 1){
+      let ans = [];
+      for(let i = 0;i < array.length - n;i++){
+        ans[ans.length] = array[i];
+      }
+      return ans;
+    },
+    /**
+     * value是否大于other
+     * @param {*} value 
+     * @param {*} other 
+     * @returns {Boolean}
+     */
+    gte: function(value,other){
+      return value >= other;
+    },
+    /**
+     *创建一个包含从 start 到 end，但不包含 end 本身范围数字的数组 
+     * @param  {...Number} args
+     * @returns {Array} 
+     */
+    range: function(...args){
+      let ans = [];
+      let start = 0;
+      let end = 0;
+      let step = 1;
+      if(args.length == 2){
+        end = args[0];
+        if(end < 0){
+          step = -1;
+        }
+        if(end == 0){
+          return [];
+        }
+      }
+      if(args.length == 2){
+        start = args[0];
+        end = args[1];
+        if(start > end){
+          step = -1;
+        }
+      }
+      if(args.length == 3){
+        start = args[0];
+        end = args[1];
+        step = args[2];
+      }
+      ans[0] = start;
+      if(step == 0){
+        ans.length = Math.abs(start - end);
+        ans.fill(start);
+        return ans;
+      }
+      for(let i = 1;i < Math.abs((start - end) / step);i++){
+        ans[ans.length] = ans[ans.length - 1] + step;
+      }
+      return ans;
+    },
+    /**
+     * 拆分字符串string中的词为数组
+     * @param {String} string 
+     * @param {RegExp} pattern 
+     */
+    
 }
     
