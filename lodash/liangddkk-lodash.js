@@ -706,6 +706,341 @@ var liangddkk = {
      * @param {String} string 
      * @param {RegExp} pattern 
      */
+    words: function(string,pattern = /\w+/g){
+      pattern.lastIndex = 0;
+      let ans = [];
+      while(pattern.lastIndex != null){
+        let tmp = pattern.exec(string);
+        if(tmp == null){
+          break;
+        }else{
+          ans[ans.length] = tmp[0];
+        }
+      }
+    },
+    /**
+     * 首字母大写
+     * @param {String} string
+     * @returns {String} 
+     */
+    upperFirst: function(string){
+      let ans = '';
+      let start = 0;
+      if(string[0].charCodeAt() >= 97 && string[0].charCodeAt() <= 122){//大小写字母范围，大写字母A的编码是65，小写字母z的编码是122，大写范围是32
+        ans += String.fromCharCode(string[0].charCodeAt() - 32);//大写字母范围
+        start = 1;
+      }
+      for(let i = start;i < string.length;i++){
+        ans += string[i];
+      }
+      return ans;
+    },
+    /**
+     * 将字符串string转换为用空格分隔的大写单词
+     * @param {String} string 
+     * @returns {String}
+     */
+    upperCase: function(string){
+      let ans = '';
+      let point = 0;
+      let flag = false;//默认值
+      for(let i = 0;i < string.length;i++){
+        if(string[i].charCodeAt() >= 97 && string[i].charCodeAt() <= 122){//97和122是小写字母范围
+          ans += String.fromCharCode(string[i].charCodeAt() - 32);//大写字母范围
+          flag = true;
+        }else if(string[i].charCodeAt() >= 65 && string[i].charCodeAt() <= 90){
+          if(flag){
+            ans += ' ';
+            flag = false;
+          }
+          ans += string[i];
+        }else{
+          if(flag){
+            ans += '';
+            flag = false;
+          }
+          continue;//继续下一循环
+        }
+      }
+      let res = '';
+      if(ans[ans.length - 1] == ' '){//结尾是空格时
+        for(let i = 0;i < ans.length - 1;i++){
+          res += ans[i];
+        }
+        return res;
+      }
+      return ans;
+    },
+    /**
+     * 首字母小写
+     * @param {String} string
+     * @returns {String} 
+     */
+    lowerFirst: function(string){
+      let ans = '';
+      let start = 0;
+      if(string[0].charCodeAt() >= 65 && string[0].charCodeAt() <= 97){//String.fromCharCode(90)为Z
+        ans += String.fromCharCode(string[0].charCodeAt() + 32);
+        start = 1;
+      }
+      for(let i = start;i < string.length;i++){
+        ans += string[i];
+      }
+      return ans;
+    },
+    /**
+     * string字符串长度小于 length 则从左侧和右侧填充字符
+     * @param {String} string 
+     * @param {Number} length 
+     * @param {String} chars
+     * @returns {String}
+     */
+    pad: function(string,length = 0,chars = ''){
+      if(length < string.length){
+        length = string.length;
+      }
+      //分成两半
+      let mid = Math.floor((length - string.length) / 2);
+      let ans = '';
+      //取整
+      for(let i = 0;i < Math.floor(mid / chars.length);i++){
+        ans += chars;
+      }
+      //取余数截断
+      for(let i = 0;i < mid % chars.length;i++){
+        ans += chars[i];
+      }
+      //填充字符串
+      ans += string;
+      for(let i = 0;i < Math.floor((length - string.length - mid) / chars.length); i++){
+        ans += chars;
+      }
+      //取余数
+      for(let i = 0;i < (length - string.length - mid) % chars.length;i++){
+        ans += chars[i];
+      }
+      return ans;
+    },
+    /**
+     * string字符串长度小于 length 则在右侧填充字符
+     * @param {String} string 
+     * @param {Number} length 
+     * @param {String} chars
+     * @returns {String}
+     */
+    padEnd: function(string,length = 0,chars = ' '){
+      if(length < string.length){
+        length = string.length;
+      }
+      let ans = '';
+      ans += string;
+      for(let i = 0;i < Math.floor((length - string.length) / chars.length);i++){
+        ans += chars;
+      }
+      for(let i = 0;i < (length - string.length) % chars.length;i++){
+        ans += chars[i];
+      }
+      return ans;
+    },
+    /**
+     * string字符串长度小于 length 则在右侧填充字符
+     * @param {String} string 
+     * @param {Number} length 
+     * @param {String} chars
+     * @returns {String}
+     */
+    padStart: function(string,length = 0,chars = ' '){
+      if(length < string.length){
+        length = string.length;
+      }
+      let ans = '';
+      for(let i = 0;i < Math.floor((length - string.length) / chars.length);i++){
+        ans += chars;
+      }
+      for(let i = 0;i < (length - string.length) % chars.length;i++){
+        ans += chars[i];
+      }
+      ans += string;
+      return ans;
+    },
+    /**
+     * 
+     * 重复 N 次给定字符串
+     * @param {String} string 
+     * @param {Number} n
+     * @returns {String} 
+     */
+    repeat: function(string,n = 1){
+      let ans = "";
+      for(let i = 0;i < n;i++){
+        ans += string;
+      }
+      return ans;
+    },
+    /**
+     * 返回数组们的交集
+     * @param  {...Array} arrays 
+     * @returns {Array}
+     */
+    intersection: function(...arrays){
+      let firstArr = [];
+      for(let i = 0;i < arrays[0].length;i++){
+        firstArr[firstArr.length] = arrays[0][i];
+      }
+      for(let i = 1;i < arrays.length;i++){
+        let tmp = getSame(firstArr,arrays[i]);
+        firstArr = [];
+        for(let i in tmp){
+          firstArr[firstArr.length] = tmp[i];
+        }
+      }
+
+      function getSame(arr1,arr2){
+        let map = [];
+        let ans = [];
+        for(let i in arr1){
+          map[arr1[i]] = true;
+        }
+        for(let i in arr2){
+          if(map[arr2[i]]){
+            ans[ans.length] = arr2[i];
+          }
+        }
+        return ans;
+      }
+      return firstArr;
+    },
+    /**
+     * 返回数组们交集的补集；
+     * @param  {...Array} arrays 
+     * @returns {Array}
+     */
+    xor: function(...arrays){
+      let map = {};
+      //map: {1: 1, 2: 2, 3: 1}
+      //数组从0遍历，不越界
+      for(let i in arrays){
+        for(let j in arrays[i]){
+          if(map[arrays[i][j]]){
+            map[arrays[i][j]]++;//有值的加一
+          }else{
+            map[arrays[i][j]] = 1;//无值的添加导对象
+          }
+        }
+      }
+      let ans = [];
+      //对象从小到大遍历
+      for(let key in map){
+        if(map[key] == 1){//交集的补集
+          ans[ans.length] = Number(key);//字符转数组
+        }
+      }
+      return ans;
+    },
+    /**
+     * value 是否小于other
+     * @param {*} value 
+     * @param {*} other 
+     * @returns {Boolean}
+     */
+    lt: function(value, other){
+        return value < other;
+    },
+    /**
+     * value 是否小于等于other
+     * @param {*} value 
+     * @param {*} other 
+     * @returns {Boolean}
+     */
+    lte: function(value, other){
+        return value <= other;
+    },
+    /**
+     * 返回一个object键值倒置后的对象 如果 object 有重复的值，后面的值会覆盖前面的值。
+     * @param {Object} object 
+     * @returns {Object}
+     */
+    invert: function(object){
+        let ans = {};
+        for(let i in object){
+            ans[object[i]] = i;
+        }
+        return ans;
+    },
+    /**
+     * 返回对象的键
+     * @param {Object} object 
+     * @returns {Object}
+     */
+    keys: function(object){
+        let newObj = Object(object);
+        let ans = [];
+        for(let i in newObj){
+            if(newObj.hasOwnProperty(i) == true)
+                ans[ans.length] = i;
+        }
+        return ans;
+    },
+    /**
+     * 整合多个对象
+     * @param  {...Object} objects 
+     * @returns {Object}
+     */
+    assign: function(...objects){
+        let ans = {};
+        for(let i in objects){
+            for(let j in objects[i]){
+                if(objects[i].hasOwnProperty(j) == true){
+                    ans[j] = objects[i][j];
+                } 
+            }
+        }
+        return ans;
+    },
+    /**
+     * 返回没有被选中的属性的整合对象
+     * @param {Object} object 
+     * @param {String/String[]} value
+     * @returns {Object} 
+     */
+    omit: function(object, value){
+        let ans  = {};
+        let map = {};
+        if(Array.isArray(value)){
+            for(let i in value){
+                map[value[i]] = true;
+            }
+        }else{
+            map[value] = true;
+        }
+        for(let i in object){
+            if(map[i]) continue;
+            else ans[i] = object[i];
+        }
+        return ans;
+    },
+    /**
+     * 返回被选中的属性的整合对象
+     * @param {Object} object 
+     * @param {String/String[]} value
+     * @returns {Object} 
+     */
+    pick: function(object, value){
+        let ans  = {};
+        let map = {};
+        if(Array.isArray(value)){
+            for(let i in value){
+                map[value[i]] = true;
+            }
+        }else{
+            map[value] = true;
+        }
+        for(let i in object){
+            if(map[i]) ans[i] = object[i];
+        }
+        return ans;
+    }
+
     
 }
     
