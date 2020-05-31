@@ -598,7 +598,7 @@ var liangddkk = {
         return ans;
     },
     /**
-     * 返回两数相乘的积
+     * 返回两数相乘的积pppp
      * @param {Number} augend 
      * @param {Number} addend 
      * @returns {Number} 
@@ -636,6 +636,28 @@ var liangddkk = {
         cnt++;
       }
       return  ans;
+    },
+    /**
+     * 此方法类似于_.unzip，除了它接受一个iteratee指定重组值应该如何被组合。iteratee 调用时会传入每个分组的值： (...group)。
+     * @param  {Array} array
+     * @param  {[iteratee=_.identity] (Function)}: 这个函数用来组合重组的值。
+     * @returns {Array} 
+     */
+    unzipWith:function(...array){
+      let pre = array[array.length - 1];
+      let zipArr = array.slice(0,array.length - 1);
+      zipArr = this.flatten(zipArr);
+      let unzipArr = this.unzip(zipArr);
+      let ans = [];
+      let cnt = 0;
+      for(let i = 0;i < unzipArr.length;i++){
+        let tmp = unzipArr[i][0];
+        for(let j = 1;j < unzipArr[i].length;j++){
+          tmp = pre(tmp,unzipArr[i][j]);
+        }
+        ans.push(tmp);
+      }
+      return ans;
     },
     /**
      * 返回一个去掉后n项的数组
@@ -1039,8 +1061,502 @@ var liangddkk = {
             if(map[i]) ans[i] = object[i];
         }
         return ans;
+    },
+    /**
+     * 返回一个首字母大写，其余小写的字符串
+     * @param {String} string
+     * @returns {String} 
+     */
+    capitalize: function(string){
+      let ans = '';
+      if(string[0].charCodeAt() >= 97 && string[0].charCodeAt() <= 122){
+        ans += String.fromCharCode(string[0].charCodeAt() - 32);//小写变大写
+      }else{
+        ans += string[0];
+      }
+      for(let i = 1;i < string.length;i++){
+        if(string[i].charCodeAt() >= 97 && string[i].charCodeAt() <= 122){//小写输出
+          ans += string[i];
+        }else{
+          ans += String.fromCharCode(string[i].charCodeAt() + 32);//大写变小写
+        }
+      }
+    },
+    /**
+     * 检查字符串string是否以给定的target字符串结尾
+     * @param {String} string  要检索的字符串
+     * @param {String} target  要检索字符
+     * @param {Number} position 检索的位置
+     * @returns {Boolean} 
+     */
+    endsWith:function(string,target,position){
+      if(position == null){
+        position = string.length - target.length;//数组的最后一位
+      }else{
+        position = position - 1;//数组的位置
+      }
+      for(let i = position,j = 0;i < target.length;i++,j++){
+        if(string[i] != target[j]){
+          return false;
+        }
+        return true;
+      }
+    },
+    /**
+     * 返回两数的积
+     * @param {Number} multiplier 
+     * @param {Number} multiplicand 
+     */
+    multiply: function(multiplier,multiplicand){
+        return multiplier * multiplicand;
+    },values: function(object){
+      let newObj = Object(object);
+      let ans = [];
+      for(let i in newObj){
+          if(newObj.hasOwnProperty(i) == true)
+              ans[ans.length] = newObj[i];
+      }
+      return ans;
+  },
+  /**
+   * 这个方法类似 _.fromPairs，除了它接受2个数组，第一个数组中的值作为属性标识符（属性名），第二个数组中的值作为相应的属性值。
+   * @param {Array} props 
+   * @param {Array} values 
+   */
+  zipObject: function(props = [],value = []){
+    let ans = {};
+    for(let i = 0,j = 0;i < props.length,j < values.length;i++,j++){
+      ans[props[i]] = values[j];
     }
+    return ans;
+  },
+  /**
+   * 从array中获得一个随机元素
+   * @param {Array/Object} array 
+   */
+  sample: function(array){
+    let r = Math.random();
+    let index = Math.floor(r * array.length);
+    return array[index];
+  },
+  /**
+   * 从array中获得 n 个随机元素
+   * @param {Array} array 
+   * @param {Number} n 
+   * @returns {Array}
+   */
+  sampleSize:function(array,n = 1){
+    let ans = [];
+    let flag = [];
+    flag.length = array.length;
+    flag.fill(false);//填充false
+    if(n > array.length){
+      n = array.length;
+    }
+    while(ans.length < n){
+      let r = Math.random();
+      let index = Math.floor(r * array.length);
+      if(!flag[index]){
+        ans[ans.length] = array[index];
+        flag[index] = true; //判断过的index为true
+      }
+    }
+    return ans;
+  },
+  /**
+   * 返回一个被打乱值的集合
+   * @param {Array} array 
+   * @returns {Array}
+   */
+  shuffle: function(array){
+    let ans = [];
+    let flag = [];
+    flag.length = array.length;
+    flag.fill(false);
+    while(ans.length < array.length){
+      let r = Math.random();
+      let index = Math.floor(r * array.length);
+      if(!flag[index]){
+        ans[ans.length] = array[index];
+        flag[index] = true;
+      }
+    }
+    return index;
+  },
+  /**
+   * 从string字符串中移除前面和后面的 空格 或 指定的字符
+   * @param {String} string 
+   * @param {String} chars
+   * @returns {String} 
+   */
+  trim: function(string,chars = " "){
+    if(chars == null){
+      chars = ' ';
+    }
+    let ans = ' ';
+    let left = 0;
+    let right = string.length - 1;
+    let map = {};
+    for(let i in chars){
+      map[chars[i]] = true;
+    }
+    while(map[string[left]] && left < string.length){
+      left++;
+    }
+    while(map[string[right]] && right >= 0){
+      right--;
+    }
+    for(let i = left;i < right;i++){
+      ans += string[i];
+    }
+    return ans;
 
+  },
+  /**
+   * 从string字符串中移除前面和后面的 空格 或 指定的字符
+   * @param {String} string 
+   * @param {String} chars
+   * @returns {String} 
+   */
+  trimStart: function(string,chars = " "){
+    if(chars == null){
+      chars = ' ';
+    }
+    let ans = ' ';
+    let left = 0;
+    let right = string.length - 1;
+    let map = {};
+    for(let i in chars){
+      map[chars[i]] = true;
+    }
+    while(map[string[left]] && left < string.length){
+      left++;
+    }
+    for(let i = left;i < right;i++){
+      ans += string[i];
+    }
+    return ans;
+
+  },
+  /**
+   * 从string字符串中移除前面和后面的 空格 或 指定的字符
+   * @param {String} string 
+   * @param {String} chars
+   * @returns {String} 
+   */
+  trimEnd: function(string,chars = " "){
+    if(chars == null){
+      chars = ' ';
+    }
+    let ans = ' ';
+    let left = 0;
+    let right = string.length - 1;
+    let map = {};
+    for(let i in chars){
+      map[chars[i]] = true;
+    }
+    while(map[string[right]] && right >= 0){
+      right--;
+    }
+    for(let i = left;i < right;i++){
+      ans += string[i];
+    }
+    return ans;
+
+  },
+  /**
+   * 转义string中的 "&", "<", ">" , '"' , "'" , 和 "`" 字符为HTML实体字符。
+   * @param {String} string 
+   * @returns {String}
+   */
+  escapge: function(string){
+    let map = {
+      '&' : '&amp;',
+      '<' : '&lt;',
+      '>' : '&gt;',
+      '"' : '&quot;',
+      "'" : '&apos;',
+      '`' : '&grave;'
+    }
+    let ans = '';
+    for(let i = 0;i < string.length;i++){
+      if(map[string[i]]){
+        ans += map[string[i]];
+      }else{
+        ans += string[i];
+      }
+      return ans;
+    }
+  },
+  /**
+   * 转换string字符串为指定基数的整数。
+   * @param {String} string 
+   * @param {Number} radix 
+   * @returns {Number}
+   */
+  parseInt: function(string,radix = 10){
+    let ans = 0;
+    if(radix == 0){
+      radix = 10;
+    }
+    let map = {
+      'A' : 10,
+      'B' : 11,
+      'C' : 12,
+      'D' : 13,
+      'E' : 14,
+      'F' : 15 
+    } 
+    for(let i = 0;i < string.length;i++){
+      ans *= radix;
+      if(map[string[i]]){
+        ans += map[string[i]];
+      }else{
+        ans += Number(string[i]);//字符转换为数字
+      }
+      return ans;
+    }
+  },
+  /**
+   * 检查字符串string是否以 target 开头
+   * @param {String}  string 要检索的字符串
+   * @param {String} target 要检索的字符
+   * @param {Number} position 检索的位置
+   * @returns {Boolean}
+   */
+  startWith: function(string,pattern,replacement){
+    let start = 0;
+    for(let i = position,j = 0;i < string.length,j < target.length;i++,j++){
+      if(string[i] != target[j]){
+        return false;
+      }
+
+      if(string.length - position >= target.length){
+        return true;
+      }else{
+        return false;
+      }
+    }
+  },
+  /**
+   * 转换字符串string以空格分开单词，并转换为小写,"FooBar"转换"foo bar"
+   * @param {String} string 
+   * @returns {String}
+   */
+  lowerCase: function(string){
+    let ans = '';
+    let point = 0;
+    while(point < string.length && !((string[point].charCodeAt() >= 65 && string[point].charCodeAt() <= 90) || (string[point].charCodeAt() >= 97 && string[point].charCodeAt() <= 122))){
+      point++;//65和90是大写，97和122是小写,不是小写字母和大写字母，point增加表明trim前端
+    }
+    while(point < string.length){
+      if(string[point].charCodeAt() >= 97 && string[point].charCodeAt() <= 122){
+        ans += string[point];
+        point++;
+      }else if(string[point].charCodeAt() >= 65 && string[point].charCodeAt() <= 90){
+        ans += String.fromCharCode(string[point].charCodeAt() + 32);//大写转小写
+        point++;
+      }else{
+        while(point < string.length && !((string[point].charCodeAt() >= 65 && string[point].charCodeAt() <= 90) || (string[point].charCodeAt() >= 97 && string.charCodeAt() <= 122))){
+          point++;
+        }
+        if(point < string.length){//中间符号转换为空值
+          ans += ' ';
+        }
+      }
+    }
+    return ans;
+  },
+  /**
+   * 转换字符串string为 驼峰写法e
+   * @param {String} string 
+   * @returns {String}
+   */
+  camelCase: function(string){
+    let lowStr = this.lowerCase(string);//转换为小写
+    let ans = '';
+    let point = 0;
+    while(lowStr[point] != ' '){//空格分割,"foo bar"
+      ans += lowStr[point];
+      point++;
+    }
+    let flag = true;
+    while(point < lowStr.length){
+      if(lowStr[point] == ' '){
+        flag = true;
+      }else{
+        if(flag){
+          ans += String.fromCharCode(lowStr[point].charCodeAt() - 32);
+          flag = false;
+        }else{
+          ans += lowStr[point];
+        }
+      }
+      point++;
+    }
+    return ans;
+  },
+  /**
+   * 转换字符串string为 kebab case
+   * @param {String} string 
+   * @returns {String}
+   */
+  kebabCase: function(string){
+    let lowStr = this.lowerCase(string);//转换为有空格的小写
+    let ans = '';
+    for(let i = 0;i < lowStr.length;i++){
+      if(lowStr[i] == ' '){
+        ans += '-';
+      }else{
+        ans += lowStr[i];
+      }
+      return ans;
+    }
+  },
+  /**
+   * 转换字符串string为 snakeCase
+   * @param {String} string 
+   * @returns {String}
+   */
+  snakeCase: function(string){
+    let lowStr = this.lowerCase(string);//转换为有空格的小写
+    let ans = '';
+    for(let i = 0;i < lowStr.length;i++){
+      if(lowStr[i] == ' '){
+        ans += '_';
+      }else{
+        ans += lowStr[i];
+      }
+      return ans;
+    }
+  },
+  /**
+   * 转换字符串string为 start case
+   * @param {String} string 
+   * @returns {String}
+   */
+  startCase: function(string){
+    let ans = '';
+    let point = 0;
+    while(point < string.length && !((string[point].charCodeAt() >= 65 && string[point].charCodeAt() <= 90) || (string[point].charCodeAt() >= 97 && string[point].charCodeAt() <= 122))){
+      point++;//65和90是大写，97和122是小写,不是小写字母和大写字母，point增加表明trim前端
+    }
+    while(point < string.length){
+      if(string[point].charCodeAt() >= 97 && string[point].charCodeAt() <= 122){
+        ans += string[point];
+        point++;
+      }else if(string[point].charCodeAt() >= 65 && string[point].charCodeAt() <= 90){
+        //ans += String.fromCharCode(string[point].charCodeAt() + 32);//大写转小写
+        ans += string[point];
+        point++;
+      }else{
+        while(point < string.length && !((string[point].charCodeAt() >= 65 && string[point].charCodeAt() <= 90) || (string[point].charCodeAt() >= 97 && string.charCodeAt() <= 122))){//尾端trim值
+          point++;
+        }
+        if(point < string.length){//中间符号转换为空值
+          ans += ' ';
+        }
+      }
+    }
+    return ans;
+  },
+  /**
+   * 返回一个新的减少一级array嵌套深度的数组
+   * @param {Array} array 
+   * @returns {Array}
+   */
+  flatten: function(array){
+    let ans = [];
+    for(let i in array){
+      if(Array.isArray(array[i])){//Array.isArray(array[i]): false是否是数组
+        for(let j in array[i]){
+          ans[ans.length] = array[i][j];
+        }
+      }else{
+        ans[ans.length] = array[i];
+      }
+    }
+    return ans;
+  },
+  /**
+   * 根据 depth 递归减少 array 的嵌套层级，flatten函数默认除掉一个array数组层级
+   * @param {Array} array 
+   * @param {Number} depth 
+   * @returns {Array}
+   */
+  flattenDepth: function(array,depth = 1){
+    let ans = array;
+    for(let i = 0;i < depth;i++){
+      ans = this.flatten(ans);//flatten函数默认除掉一个array数组层级
+    }
+    return ans;
+  },
+  /**
+   * 将array递归为一维数组
+   * @param {Array} array
+   * @returns {Array} 
+   */
+  flattenDeep: function(array){
+    function getDeep(arr){
+      let res = [];
+      for(let i = 0;i < arr.length;i++){
+        if(Array.isArray(arr[i])){
+          let tmp = getDeep(arr[i]);
+          for(let i in tmp){
+            res[res.length] = tmp[i];
+          }
+        }else{
+          res[res.length] = arr[i];
+        }
+      }
+      return res;
+    }
+    return getDeep(array);
+  },
+  /**
+   * 返回一个由键值对pairs构成的对象
+   * @param {Array} pairs 
+   * @returns {Object}
+   */
+  fromPair: function(pairs){
+    let ans = {};
+    for(let i in pairs){
+      ans[pairs[i][0]] = pairs[i][1];
+    }
+    return ans;
+  },
+  /**
+   * 返回一个不重复的数组
+   * @param {Array} 
+   * @returns {Array}
+   */
+  sortedUniq: function(array){
+    let ans = [];
+    ans.push(array[0]);
+    for(let i = 1;i < array.length;i++){
+      if(array[i] != array[i - 1]){
+        ans.push(array[i]);
+      }
+    }
+    return ans;
+  },
+  /**
+   * 返回一个不重复的数组
+   * @param {Array} 
+   * @param [iteratee] (Function) 
+   * @returns {Array}
+   */
+  sortedUniqBy: function(array,iteratee){
+    let map = {};
+    let ans = [];
+    for(let i in array){
+      if(!map[iteratee(array[i])]){//!map[""] == true,map[""] == undefined
+        ans.push(array[i]);
+        map[iteratee(array[i])] = true;
+      }
+    }
+    return ans;
+  }
     
 }
     
