@@ -1556,6 +1556,84 @@ var liangddkk = {
       }
     }
     return ans;
+  },
+  /**
+   * 转换数组的值
+   * @param {Array} 
+   * @returns {Array}
+   */
+  toArray:function(value){
+    let ans = [];
+    for(let i in value){
+      ans.push(values[i]);
+    }
+    return ans;
+  },
+  /**
+   * 转换 value 为一个数字
+   * @param {value} 
+   * @returns {value}
+   */
+  toNumber: function(value){
+    return value == null ? null : Number(value);
+  },
+  /**
+   * 强制转换数组
+   * @param {value} 
+   * @returns {Array}
+   */
+  castArray: function(...value){
+    if(value.length == 0){
+      return [];
+    }
+    if(Array.isArray(value)){
+      return value;
+    }else{
+      return [value];
+    }
+  },
+  /**
+   * 返回限制在 lower 和 upper 之间的值
+   * @param {value} (number): 被限制的值。
+   * @param {lower} (number): 下限。
+   * @param {upper} (number): 上限。
+   * @returns {value} (number): 返回限制在 lower 和 upper 之间的值
+   */
+  clamp: function(number,lower,upper){
+    if(number > upper){
+      return upper;
+    }
+    if(number < lower){
+      return lower;
+    }
+    return number;
+  },
+  /**
+   * 检查 n 是否在 start 与 end 之间，但不包括 end。 如果 end 没有指定，那么 start 设置为0。 如果 start 大于 end，那么参数会交换以便支持负范围。
+   * @param {Number} value 要检查的值
+   * @param {Number} start 开始范围
+   * @param {Number} end 不包括
+   * @returns {Boolean} 
+   */
+  inRange: function(...nums){
+    if(nums.length == 3){
+      let start = nums[1] < nums[2] ? nums[1] : nums[2];
+      let start = nums[1] < nums[2] ? nums[2] : nums[1];
+      if(nums[0] >= start &&  nums[0] < end){
+        return true;
+      }else{
+        return false;
+      }
+    }
+    if(nums.length == 2){
+      let start = nums[1] < 0 ? nums[1] : 0;
+      let start = nums[1] < 0 ? 0 : nums[1];
+      if(nums[0] >= start &&  nums[0] < end){
+        return true;
+      }else{
+        return false;
+      }
+    }
   }
     
 }
