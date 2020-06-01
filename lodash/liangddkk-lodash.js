@@ -724,6 +724,21 @@ var liangddkk = {
       return ans;
     },
     /**
+     * 降序输出层级值
+     * @param {Number} start = 0 要检查的值
+     * @param {Number} end 开始范围
+     * @param {Number} step = 1 不包括
+     * @returns {Boolean} 
+     */
+    rangeRight: function(...args){
+      let tmp  = this.range(...args);//升序输出层级值
+      let ans = [];
+      for(let i = tmp.length - 1;i >= 0;i--){//降序输出层级值
+        ans.push(tmp[i]);
+      }
+      return ans;
+    },
+    /**
      * 拆分字符串string中的词为数组
      * @param {String} string 
      * @param {RegExp} pattern 
@@ -1618,7 +1633,7 @@ var liangddkk = {
   inRange: function(...nums){
     if(nums.length == 3){
       let start = nums[1] < nums[2] ? nums[1] : nums[2];
-      let start = nums[1] < nums[2] ? nums[2] : nums[1];
+      let end = nums[1] < nums[2] ? nums[2] : nums[1];
       if(nums[0] >= start &&  nums[0] < end){
         return true;
       }else{
@@ -1627,7 +1642,7 @@ var liangddkk = {
     }
     if(nums.length == 2){
       let start = nums[1] < 0 ? nums[1] : 0;
-      let start = nums[1] < 0 ? 0 : nums[1];
+      let end = nums[1] < 0 ? 0 : nums[1];
       if(nums[0] >= start &&  nums[0] < end){
         return true;
       }else{
