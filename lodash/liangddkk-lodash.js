@@ -1649,7 +1649,36 @@ var liangddkk = {
         return false;
       }
     }
-  }
-    
+  },
+  /**
+   * 转换整个string字符串的字符为小写
+   * @param {string} string = ''
+   * @returns {string} 
+   */
+  toLower: function(string = ''){
+    let ans = '';
+    for(let i = 0; i  < string.length;i++){
+      if(string[i].charCodeAt() > 65 && string[i].charCodeAt() <= 90){
+        ans += String.fromCharCode(string[i].charCodeAt() + 32);
+      }else{
+        ans += string[i];
+      }
+    }
+  },
+  /**
+   * 转换整个string字符串的字符为大写
+   * @param {string} string = ''
+   * @returns {string} 
+   */
+  toUpper: function(string = ''){
+    let ans = '';
+    for(let i = 0; i  < string.length;i++){
+      if(string[i].charCodeAt() > 97 && string[i].charCodeAt() <= 122){
+        ans += String.fromCharCode(string[i].charCodeAt() - 32);
+      }else{
+        ans += string[i];
+      }
+    }
+  }  
 }
     
