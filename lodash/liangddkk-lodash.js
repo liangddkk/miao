@@ -101,13 +101,13 @@ var liangddkk = {
           map[args[i][j]] = false;
         }
       }
-      for(var i in array){
-        if(map[array[i]]){
-          ans[ans.length] = array[i]; 
-        }
-      }
-      return ans;
     }
+    for(var i in array){
+      if(map[array[i]]){
+        ans[ans.length] = array[i]; 
+      }
+    }
+    return ans;
   },
   /**
    * 返回一个去掉前n项的数组,n默认值为1
@@ -1800,6 +1800,268 @@ var liangddkk = {
       }
       return tmp;
     }
+  },
+  range:function(start,end){
+    var result = [];
+    for(var i = start;i <= end;i++){
+      result.push(i);
+    }
+    return result;
+  },
+  /**
+   * 输出水仙花数
+   * @param {Number} n 
+   * @return {Number} sum
+   */
+  isSXH:function(n){
+    var m = n;
+    var width = getDigitwidth(n);
+    var sum = 0;
+    while(n > 0){
+      var digit = n % 10;
+      sum += power(digit,width);
+      n = (n - digit) / 10; 
+    }
+    return sum === m;
+  },
+  /**
+   * 创建一个调用func的函数，通过this绑定和创建函数的参数调用func，
+   * 调用次数不超过 n 次，之后再调用这个函数，将返回一次最后调用func的结果。
+   * @param {Number} n 
+   * @param {Function} func
+   * @return {Array} result
+   * 
+   */
+  before:function (n,func){
+    var i = 0;
+    var result;
+    return function(...args){
+      if(i < n){
+        i++;
+        result = func(...args);
+      }
+      return result;
+    }
+  },
+  /**
+   * _.before的反向函数;此方法创建一个函数，当他被调用n或更多次之后将马上触发func 。
+   * @param {Number} n 
+   * @param {Function} func
+   * @return {Array} result
+   * 
+   */
+  after:function (n,func){
+    var i = 0;
+    var result;
+    return function(...args){
+      if(i < n){
+        i++;
+        result = func(...args);
+      }
+      return result;
+    }
+  },
+  /**
+   * 创建一个调用func的函数。调用func时最多接受 n个参数，忽略多出的参数。
+   * @param {[Number]} n 可以不传 
+   * @param {Function} func
+   * @return {Function} func
+   * 
+   */
+  ary:function(func,n = func.length){
+    return function(...args){
+      return func(...args.slice(0,n));
+    }
+  },
+  /**
+   * 创建一个最多接受一个参数的函数，忽略多余的参数。
+   * @param {Function} func
+   * @return {Function} func
+   * 
+   */
+  unary:function(func){
+    return function(args){
+      return func(args);
+    }
+  },
+  /**
+   * 创建一个函数，调用func时候接收翻转的参数。
+   * @param {Function} func
+   * @return {Function} func
+   * 
+   */
+  //parseInt2 = flip(parseInt)
+  //parseInt3 = parseInt2.bind(null, 16)
+  //;['1','2','a'].map( unary(parseInt3))
+  flip:function(){
+    return function(){
+      return func(...args.reverse());
+    }
+  },
+  /**
+   * 创建一个针对断言函数 func结果取反的函数。
+   * func断言函数被调用的时候,this绑定到创建的函数,并传入对应参数。
+   * @param {Function} func
+   * @return {Function} func
+   */
+  negate:function(){
+    return function(){
+      return !func(...args);//对函数当成一个值，相当于反函数
+    }
+  },
+  /**
+   * _.filter的反向方法;此方法 返回 predicate（断言函数）
+   * 不返回truthy(真值)的collection(集合)元素(注释：非真)。
+   * @param {Function} func
+   * @return {Function} func
+   */
+  reject:function(ary,test){//自己实现的filter函数
+    return this.filter(ary,negate(test));
+    // var result = [];
+    // for(var i = 0;i < ary.length;i++){
+    //   if(!test(ary[i])){
+    //     result.push(ary[i]);
+    //   }
+    // }
+    return result;
+  },
+  some:function(ary, test) {//自己实现的every函数
+    return !every(ary, negate(test))
+  },
+  /**
+   * 创建一个函数，调用func时，this绑定到创建的新函数，
+   * 把参数作为数组传入，类似于Function#apply.
+   * @param {Function} func
+   * @return {Function} func
+   */
+  spread:function(func) {
+    return function (ary) {
+      return func(...ary);
+      // return func.apply(null，ary);函数绑定到数组
+    }
+  },
+  /**
+   * 创建一个调用func的函数,thisArg绑定func函数中的 this (注：this的上下文为thisArg)，
+   * 并且func函数会接收partials附加参数。_.bind.placeholder值，默认是以_作为附加部分参数的占位符。
+   * 注意: 不同于原生的Function#bind，这个方法不会设置绑定函数的"length"属性。
+   * @param {Function} func
+   * @return {Function} func
+   */
+  bind:function(f, ...fixedArgs) { // [1,null,null,3]
+    return function bound(...args) {//[7,8,9]
+      var copy = fixedArgs.slice()
+      var j = 0
+  
+      for (var i = 0; i < copy.length; i++) {
+        if (copy[i] === null) {//绑定参数
+          copy[i] = args[j++]
+        }
+      }
+      while (j < args.length) {
+        copy.push(args[j++])
+      }
+      
+      return f(...copy)
+    }
+  },
+  filter:function(ary,predicate) { // [1,null,null,3]
+    var test = predicate;
+    if(typeof predicate === 'string'){
+      test = it => it[predicate];
+    }else if(Array.isArray(predicate)){//{active:true,gender:'f'}
+      test = it => it[predicate]
+    }else if(typeof predicate === 'object'){//{active:true,gender:'f'}
+      if(Array.isArray(predicate))
+      predicate = this.fromPair(predicate);
+      test = (it) => {
+        for(var key in predicate){
+          if(predicate[key] != it[key]){
+            return false;
+          }
+        }
+        return true;
+      }
+    }
+  },
+  //lodash写法
+  filterOffical:function(ary,predicate) { // [1,null,null,3]
+    predicate = this.iterateeOfficial(predicate);
+  },
+  /**
+   * 创建一个函数，通过创建函数的参数调用 func 函数。 如果func是一个属性名，
+   * 传入包含这个属性名的对象，回调返回对应属性名的值。 如果func是一个对象，
+   * 传入的元素有相同的对象属性，回调返回true。其他情况返回false 。
+   * @param {Function} func
+   * @return {Function} func
+   */
+  iteratee:function(ary,predicate) {
+    var test = predicate;
+    if(typeof predicate === 'string'){
+      test = it => it[predicate];
+    }else if(Array.isArray(predicate)){//{active:true,gender:'f'}
+      test = it => it[predicate]
+    }else if(typeof predicate === 'object'){//{active:true,gender:'f'}
+      if(Array.isArray(predicate))
+      predicate = this.fromPair(predicate);
+      test = (it) => {
+        for(var key in predicate){
+          if(predicate[key] != it[key]){
+            return false;
+          }
+        }
+        return true;
+      }
+    }
+  },
+  //lodash写法
+  /**
+   * 创建一个深比较的方法来比较给定的对象和 source 对象。
+   * 如果给定的对象拥有相同的属性值返回 true，否则返回 false。
+   * 注意: 创建的函数相当于_.isMatch应用 source 。
+   * 部分比较匹配空数组和空对象源值，分别针对任何数组或对象的价值。见_.isEqual支持的价值比较的列表。
+   * @param {*} ary 
+   * @param {*} predicate 
+   */
+  matches:function(target) {
+    return function(obj){
+      for(var key in target){
+        if(obj[key] !== target[key]){
+          return false;
+        }
+      }
+      return true;
+    }
+  },
+    /**
+   * 创建一个深比较的方法来比较给定对象的 path 的值是否是 srcValue 。 如果是返回 true ，否则返回 false 。
+   * @param {*} ary 
+   * @param {*} predicate 
+   */
+  matchesProperty:function(ary) {
+    return this.matches(this.fromPair(this.chunk(ary,2)));
+  },
+  //lodash写法
+  iterateeOfficial:function(ary,predicate) {
+    if(typeof predicate === 'string'){
+      return _.property(predicate);
+    }else if(Array.isArray(predicate)){//{active:true,gender:'f'}
+      return _.matches(predicate);
+    }else if(typeof predicate === 'object'){//{active:true,gender:'f'}
+      return _.matchesProperty(predicate);
+    }
+    return predicate;
+  },
+  property:function(prop) {
+    return function(obj){
+      return obj[prop];
+    }
+  },
+  getPropertyBind:function(obj,prop){
+    return obj[prop]
+  },
+  PropertyBind:function(prop) {//property bind写法
+    return this.getPropertyBind.bind(null,_,prop);
   }
-}
-    
+} 
+
+
