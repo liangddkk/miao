@@ -1512,14 +1512,11 @@ var liangddkk = {
    * @returns {Array} 
    */
   flattenDeep: function(array){
+    var res = [];
     function getDeep(arr){
-      var res = [];
       for(var i = 0;i < arr.length;i++){
         if(Array.isArray(arr[i])){
-          var tmp = getDeep(arr[i]);
-          for(var i in tmp){
-            res[res.length] = tmp[i];
-          }
+          getDeep(arr[i]);
         }else{
           res[res.length] = arr[i];
         }
