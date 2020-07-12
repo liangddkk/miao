@@ -35,8 +35,8 @@ var liangddkk = {
     }
     var ans = [];
     var cns = 0;
-    ans[0] = [];
     //创建二维数组
+    ans[0] = [];
     ans[0][0] = array[0];
     for(var i = 1;i < array.length;i++){
       if(i % size == 0){
@@ -60,6 +60,9 @@ var liangddkk = {
       }
     }
     return ans;
+
+    //第二种写法
+    // return array.filter(x => x > 0 || x < 0);
   },
   /**
    * 返回一个将原数组与任何值或数组连接起来的数组
@@ -108,6 +111,13 @@ var liangddkk = {
       }
     }
     return ans;
+
+    //第二种写法
+    // let arrays = []
+    // for (let x of values) {
+    //     arrays = arrays.concat(x)
+    // }
+    // return array.filter((x) => !arrays.includes(x))
   },
   /**
    * 返回一个去掉前n项的数组,n默认值为1
@@ -1511,7 +1521,8 @@ var liangddkk = {
    * @param {Array} array
    * @returns {Array} 
    */
-  flattenDeep: function(array){
+  flattenDeep: function flattenDeep(array){
+    //方法一 普通调用
     var res = [];
     function getDeep(arr){
       for(var i = 0;i < arr.length;i++){
@@ -1524,6 +1535,10 @@ var liangddkk = {
       return res;
     }
     return getDeep(array);
+
+    //方法二 箭头函数
+
+    // return [].concat(...array.map(it => Array.isArray(it)? flattenDeep(it): it));
   },
   /**
    * 返回一个由键值对pairs构成的对象
