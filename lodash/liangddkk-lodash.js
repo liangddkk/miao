@@ -1,4 +1,4 @@
-var liangddkk = {
+let liangddkk = {
   /**
    * 判断一个数是否为NaN
    * @param {*} val 
@@ -33,12 +33,12 @@ var liangddkk = {
     if(array.length == 0){
       return [];
     }
-    var ans = [];
-    var cns = 0;
+    let ans = [];
+    let cns = 0;
     //创建二维数组
     ans[0] = [];
     ans[0][0] = array[0];
-    for(var i = 1;i < array.length;i++){
+    for(let i = 1;i < array.length;i++){
       if(i % size == 0){
         cns++;
         ans[cns] = [];
@@ -53,8 +53,8 @@ var liangddkk = {
    * @return {Array}
    */
   compact: function(array){
-    var ans = [];
-    for(var i = 0;i < array.length;i++){
+    let ans = [];
+    for(let i = 0;i < array.length;i++){
       if(array[i]){
         ans[ans.length] = array[i]
       }
@@ -71,13 +71,13 @@ var liangddkk = {
    * @returns {Array}
    */
   concat:function(array,...args){
-    var ans = [];
-    for(var i in array){
+    let ans = [];
+    for(let i in array){
       ans[ans.length] = array[i];
     }
-    for(var i = 0;i < args.length;i++){
+    for(let i = 0;i < args.length;i++){
       if(Array.isArray(args[i])){
-        for(var j in args[i]){
+        for(let j in args[i]){
           ans[ans.length] = args[i][j];
         }
       }else{
@@ -93,19 +93,19 @@ var liangddkk = {
    * @returns {Array}
    */
   difference: function(array,...args){
-    var map = {};
-    var ans = [];
-    for(var i = 0;i < array.length;i++){
+    let map = {};
+    let ans = [];
+    for(let i = 0;i < array.length;i++){
       map[array[i]] = true;
     }
-    for(var i in args){
-      for(var j in args[i]){
+    for(let i in args){
+      for(let j in args[i]){
         if(map[args[i][j]]){
           map[args[i][j]] = false;
         }
       }
     }
-    for(var i in array){
+    for(let i in array){
       if(map[array[i]]){
         ans[ans.length] = array[i]; 
       }
@@ -126,8 +126,8 @@ var liangddkk = {
    * @returns {Array}
    */
   drop:function(array,n = 1){
-    var ans = [];
-    for(var i = n;i < array.length;i++){
+    let ans = [];
+    for(let i = n;i < array.length;i++){
       ans[ans.length] = array[i];
     }
     return ans
@@ -140,14 +140,14 @@ var liangddkk = {
    * @param {Number} end 
    */
   fill:function(array,val,start = 0,end = array.length){
-    var ans = [];
-    for(var i = 0;i < start;i++){
+    let ans = [];
+    for(let i = 0;i < start;i++){
       ans[ans.length] = array[i];
     }
-    for(var i = start;i < end;i++){
+    for(let i = start;i < end;i++){
       ans[ans.length] = val;
     }
-    for(var i = end;i < array.length;i++){
+    for(let i = end;i < array.length;i++){
       ans[ans.length] = array[i];
     }
     return ans;
@@ -167,7 +167,7 @@ var liangddkk = {
    * @param {Number} fromIndex 
    */
   indexOf: function(array,val,fromIndex = 0){
-    for(var i = fromIndex;i < array.length;i++){
+    for(let i = fromIndex;i < array.length;i++){
       if(array[i] === val || (val !== val && array[i] !== array[i])){
         return i;
       }
@@ -179,8 +179,8 @@ var liangddkk = {
    * @param {Array} array 
    */
   initial: function(array){
-    var ans = [];
-    for(var i = 0;i < array.length - 1;i++){
+    let ans = [];
+    for(let i = 0;i < array.length - 1;i++){
       ans[ans.length] = array[i];
     }
     return ans;
@@ -192,11 +192,11 @@ var liangddkk = {
    * @returns {String}
    */
   join: function(array,separator = ','){
-    var ans = '';
+    let ans = '';
     if(array.length != 0){
       ans += '' + array[0]
     }
-    for(var i = 1;i < array.length;i++){
+    for(let i = 1;i < array.length;i++){
       ans += '' + separator + array[i];
     }
     return ans;
@@ -216,7 +216,7 @@ var liangddkk = {
   * @param {Number} fromIndex 
   */
  lastIndexOf: function(array,val,fromIndex = array.length - 1){
-   for(var i = fromindex;i >= 0;i--){
+   for(let i = fromindex;i >= 0;i--){
     if(array[i] === val ||(val !== val && array[i] !==array[i])){
       return i;
     }
@@ -242,18 +242,18 @@ var liangddkk = {
   * @returns {Array}
   */
  pull: function(array,...args){
-  var map = {};
-  var ans = [];
-  for(var i in args){
+  let map = {};
+  let ans = [];
+  for(let i in args){
     map[args[i]] = true;
   }
-  for(var i in array){
+  for(let i in array){
     if(!map[array[i]]){
       ans[ans.length] = array[i];
     }
   }
   array = [];
-  for(var i in ans){
+  for(let i in ans){
     array[i] = ans[i];
   }
   return array;
@@ -265,18 +265,18 @@ var liangddkk = {
   * @returns {Array}
   */
  pullAll: function(array,values){
-  var map = {};
-  var ans = [];
-  for(var i in values){
+  let map = {};
+  let ans = [];
+  for(let i in values){
     map[value[i]] = true;
   }
-  for(var i in array){
+  for(let i in array){
     if(!map[array[i]]){
       ans[ans.length] = array[i];
     }
   }
   array = [];
-  for(var i in ans){
+  for(let i in ans){
     array[i] = ans[i];
   }
   return array;
@@ -287,12 +287,12 @@ var liangddkk = {
   * @param  {...any} args 
   */
   pullAt: function(array,...values){
-    var map = {};
-    var ans = [];
-    for(var i in values){//i为"0"开头
+    let map = {};
+    let ans = [];
+    for(let i in values){//i为"0"开头
       map[values[i]] = true;
     }
-    for(var i in array){
+    for(let i in array){
       if(!map[i]){
         ans[ans.length] = array[i];
       }
@@ -305,17 +305,17 @@ var liangddkk = {
    * @returns {Array} 
    */
   reverse: function(array){
-    var left = 0;
-    var right = array.length - 1;
+    let left = 0;
+    let right = array.length - 1;
     while(left < right){
-      var tmp = array[right];
+      let tmp = array[right];
       array[left] = array[right];
       array[right] = tmp;
       left++;
       righ--;
     }
-    var ans = [];
-    for(var i in array){
+    let ans = [];
+    for(let i in array){
       ans[i] = array[i];
     }
     return ans;
@@ -328,8 +328,8 @@ var liangddkk = {
    * @returns {Array}
    */
   slice: function (array,start = 0,end = array.length) {
-    var ans = [];
-    for(var i = start;i < end;i++){
+    let ans = [];
+    for(let i = start;i < end;i++){
       ans[ans.length] = array[i];
     }
     return ans;
@@ -341,14 +341,14 @@ var liangddkk = {
    * @returns {Number} 
    */
   sortedIndex: function (array,val){
-    var low = 0;
-    var high = array.length - 1;
+    let low = 0;
+    let high = array.length - 1;
     if(val > array[high]){
       return array.length;
     }
     while(low < high){
       //取整
-      var mid = Math.floor((low + high) / 2);
+      let mid = Math.floor((low + high) / 2);
       if(array[mid] < val){
         low = mid + 1;
       }else{
@@ -358,13 +358,13 @@ var liangddkk = {
     return low;
   },
   sortedIndexOf: function(array,val) {
-    var low = 0;
-    var high = array.length - 1;
+    let low = 0;
+    let high = array.length - 1;
     if(val > array[high]){
       return array.length;
     }
     while(low < high){
-      var mid = Math.floor((low + high) / 2);
+      let mid = Math.floor((low + high) / 2);
       if(array[mid] < val){
         low = mid + 1;
       }else{
@@ -382,8 +382,8 @@ var liangddkk = {
    * @returns {Array} 
    */
   tail: function(array){
-     var ans = [];
-     for(var i = 1;i < array.length;i++){
+     let ans = [];
+     for(let i = 1;i < array.length;i++){
       ans[ans.length] = array[i];
      }
      return ans;
@@ -395,8 +395,8 @@ var liangddkk = {
     * @returns {Array} 
     */
    take: function(array,n = 1){
-     var ans = [];
-     for(var i = 0;i < n;i++){
+     let ans = [];
+     for(let i = 0;i < n;i++){
     // if(i >= array.length){
     //   break;
     // }
@@ -411,8 +411,8 @@ var liangddkk = {
     * @returns {Array} 
     */
    takeRight:function(array,n = 1){
-     var ans = [];
-     for(var i = array.length - n;i < array.length;i++){
+     let ans = [];
+     for(let i = array.length - n;i < array.length;i++){
        //防止i小于0
       if(i < 0){
         continue;
@@ -426,10 +426,10 @@ var liangddkk = {
     * @param  {...any} arrays 
     */
    union: function(...array){
-     var map = {};
-     var ans = [];
-     for(var i in array){
-      for(var j in array[i]){//多维数组没有值就不遍历了
+     let map = {};
+     let ans = [];
+     for(let i in array){
+      for(let j in array[i]){//多维数组没有值就不遍历了
         if(!map[array[i][j]]){
             map[array[i][j]] = true;
             ans[ans.length] = array[i][j];
@@ -444,9 +444,9 @@ var liangddkk = {
     * @returns {Array}
     */
    uniq: function(array){
-     var map = {};
-     var ans = [];
-     for(var i in array){
+     let map = {};
+     let ans = [];
+     for(let i in array){
       if(!map[array[i]]){
         map[array[i]] = true;
         ans[ans.length] = array[i];
@@ -460,16 +460,16 @@ var liangddkk = {
      * @returns {Array} 
      */
     zip: function(...array){
-      var ans = [];
+      let ans = [];
       ans[0] = [];
-      var cnt = 0;
-      var maxLen = 0;
-      for(var i in array){
+      let cnt = 0;
+      let maxLen = 0;
+      for(let i in array){
         maxLen = (maxLen > array[i].length ? maxLen:array[i].length);
       }
-      for(var j = 0;j < maxLen;j++){
+      for(let j = 0;j < maxLen;j++){
         ans[cnt] = [];
-        for(var i in array){
+        for(let i in array){
           ans[cnt][ans[cnt].length] = array[i][cnt];
         }
         cnt++;
@@ -487,8 +487,8 @@ var liangddkk = {
         return value.length;
       }else if(Object.prototype.toString.call === '[object Object]'){
         //如果集合是对象，返回其可枚举属性的个数
-        var cnt = 0;
-        for(var i in value){
+        let cnt = 0;
+        for(let i in value){
           cnt++;
         }
         return cnt;
@@ -502,7 +502,7 @@ var liangddkk = {
      */
     floor: function(num,precision = 0){
       //先乘
-      var ans = Math.pow(10,precision) * num;
+      let ans = Math.pow(10,precision) * num;
       //向下取整
       ans = Math.floor(ans);
       //后除
@@ -518,8 +518,8 @@ var liangddkk = {
       if(array == null || array.length == 0){
         return undefined;
       }
-      var ans = -Infinity;//最小值
-      for(var i in array){
+      let ans = -Infinity;//最小值
+      for(let i in array){
         ans = ans < array[i] ? ans : array[i];
       }
       return ans;
@@ -533,8 +533,8 @@ var liangddkk = {
       if(array == null || array.length == 0){
         return undefined;
       }
-      var ans = Infinity;//最大值
-      for(var i in array){
+      let ans = Infinity;//最大值
+      for(let i in array){
         ans = ans < array[i] ? ans : array[i];
       }
       return ans;
@@ -548,8 +548,8 @@ var liangddkk = {
       if(array == null || array.length == 0){
         return undefined;
       }
-      var s = 0;
-      for(var i in array){
+      let s = 0;
+      for(let i in array){
         s += array[i];
       }
       return s / array.length;
@@ -560,7 +560,7 @@ var liangddkk = {
      * @param {Number} precision 
      */
     round: function(num,precision = 0){
-      var ans = Math.pow(10,precision) * num;
+      let ans = Math.pow(10,precision) * num;
       ans = Math.round(ans);
       ans /= Math.pow(10,precision);
       return ans;
@@ -572,8 +572,8 @@ var liangddkk = {
      */
     sum: function(array){
         if(array == null || array.length == 0) return undefined;
-        var s = 0;
-        for(var i in array){
+        let s = 0;
+        for(let i in array){
             s += array[i];
         }
         return s;
@@ -602,7 +602,7 @@ var liangddkk = {
      * @param {Number} precision 
      */
     ceil: function(num, precision = 0){
-        var ans = Math.pow(10, precision) * num;
+        let ans = Math.pow(10, precision) * num;
         ans = Math.ceil(ans);
         ans /= Math.pow(10, precision);
         return ans;
@@ -631,16 +631,16 @@ var liangddkk = {
      * @returns {Array} 
      */
     unzip:function(array){
-      var ans = [];
+      let ans = [];
       ans[0] = [];
-      var cnt = 0;
-      var maxLen = 0;
-      for(var i = 0;i < array.length;i++){
+      let cnt = 0;
+      let maxLen = 0;
+      for(let i = 0;i < array.length;i++){
         maxLen = maxLen > array[i].length ? maxLen : array[i].length;
       }
-      for(var j = 0;j < maxLen;j++){
+      for(let j = 0;j < maxLen;j++){
         ans[cnt] = [];
-        for(var i = 0;i < array.length;i++){
+        for(let i = 0;i < array.length;i++){
           ans[cnt][ans[cnt].length] = array[i][cnt];
         }
         cnt++;
@@ -654,15 +654,15 @@ var liangddkk = {
      * @returns {Array} 
      */
     unzipWith:function(...array){
-      var pre = array[array.length - 1];
-      var zipArr = array.slice(0,array.length - 1);
+      let pre = array[array.length - 1];
+      let zipArr = array.slice(0,array.length - 1);
       zipArr = this.flatten(zipArr);
-      var unzipArr = this.unzip(zipArr);
-      var ans = [];
-      var cnt = 0;
-      for(var i = 0;i < unzipArr.length;i++){
-        var tmp = unzipArr[i][0];
-        for(var j = 1;j < unzipArr[i].length;j++){
+      let unzipArr = this.unzip(zipArr);
+      let ans = [];
+      let cnt = 0;
+      for(let i = 0;i < unzipArr.length;i++){
+        let tmp = unzipArr[i][0];
+        for(let j = 1;j < unzipArr[i].length;j++){
           tmp = pre(tmp,unzipArr[i][j]);
         }
         ans.push(tmp);
@@ -676,8 +676,8 @@ var liangddkk = {
      * @returns {Array}
      */
     dropRight: function(array,n = 1){
-      var ans = [];
-      for(var i = 0;i < array.length - n;i++){
+      let ans = [];
+      for(let i = 0;i < array.length - n;i++){
         ans[ans.length] = array[i];
       }
       return ans;
@@ -697,10 +697,10 @@ var liangddkk = {
      * @returns {Array} 
      */
     range: function(...args){
-      var ans = [];
-      var start = 0;
-      var end = 0;
-      var step = 1;
+      let ans = [];
+      let start = 0;
+      let end = 0;
+      let step = 1;
       if(args.length == 2){
         end = args[0];
         if(end < 0){
@@ -728,7 +728,7 @@ var liangddkk = {
         ans.fill(start);
         return ans;
       }
-      for(var i = 1;i < Math.abs((start - end) / step);i++){
+      for(let i = 1;i < Math.abs((start - end) / step);i++){
         ans[ans.length] = ans[ans.length - 1] + step;
       }
       return ans;
@@ -741,9 +741,9 @@ var liangddkk = {
      * @returns {Boolean} 
      */
     rangeRight: function(...args){
-      var tmp  = this.range(...args);//升序输出层级值
-      var ans = [];
-      for(var i = tmp.length - 1;i >= 0;i--){//降序输出层级值
+      let tmp  = this.range(...args);//升序输出层级值
+      let ans = [];
+      for(let i = tmp.length - 1;i >= 0;i--){//降序输出层级值
         ans.push(tmp[i]);
       }
       return ans;
@@ -755,9 +755,9 @@ var liangddkk = {
      */
     words: function(string,pattern = /\w+/g){
       pattern.lastIndex = 0;
-      var ans = [];
+      let ans = [];
       while(pattern.lastIndex != null){
-        var tmp = pattern.exec(string);
+        let tmp = pattern.exec(string);
         if(tmp == null){
           break;
         }else{
@@ -771,13 +771,13 @@ var liangddkk = {
      * @returns {String} 
      */
     upperFirst: function(string){
-      var ans = '';
-      var start = 0;
+      let ans = '';
+      let start = 0;
       if(string[0].charCodeAt() >= 97 && string[0].charCodeAt() <= 122){//大小写字母范围，大写字母A的编码是65，小写字母z的编码是122，大写范围是32
         ans += String.fromCharCode(string[0].charCodeAt() - 32);//大写字母范围
         start = 1;
       }
-      for(var i = start;i < string.length;i++){
+      for(let i = start;i < string.length;i++){
         ans += string[i];
       }
       return ans;
@@ -788,10 +788,10 @@ var liangddkk = {
      * @returns {String}
      */
     upperCase: function(string){
-      var ans = '';
-      var point = 0;
-      var flag = false;//默认值
-      for(var i = 0;i < string.length;i++){
+      let ans = '';
+      let point = 0;
+      let flag = false;//默认值
+      for(let i = 0;i < string.length;i++){
         if(string[i].charCodeAt() >= 97 && string[i].charCodeAt() <= 122){//97和122是小写字母范围
           ans += String.fromCharCode(string[i].charCodeAt() - 32);//大写字母范围
           flag = true;
@@ -809,9 +809,9 @@ var liangddkk = {
           continue;//继续下一循环
         }
       }
-      var res = '';
+      let res = '';
       if(ans[ans.length - 1] == ' '){//结尾是空格时
-        for(var i = 0;i < ans.length - 1;i++){
+        for(let i = 0;i < ans.length - 1;i++){
           res += ans[i];
         }
         return res;
@@ -824,13 +824,13 @@ var liangddkk = {
      * @returns {String} 
      */
     lowerFirst: function(string){
-      var ans = '';
-      var start = 0;
+      let ans = '';
+      let start = 0;
       if(string[0].charCodeAt() >= 65 && string[0].charCodeAt() <= 97){//String.fromCharCode(90)为Z
         ans += String.fromCharCode(string[0].charCodeAt() + 32);
         start = 1;
       }
-      for(var i = start;i < string.length;i++){
+      for(let i = start;i < string.length;i++){
         ans += string[i];
       }
       return ans;
@@ -847,23 +847,23 @@ var liangddkk = {
         length = string.length;
       }
       //分成两半
-      var mid = Math.floor((length - string.length) / 2);
-      var ans = '';
+      let mid = Math.floor((length - string.length) / 2);
+      let ans = '';
       //取整
-      for(var i = 0;i < Math.floor(mid / chars.length);i++){
+      for(let i = 0;i < Math.floor(mid / chars.length);i++){
         ans += chars;
       }
       //取余数截断
-      for(var i = 0;i < mid % chars.length;i++){
+      for(let i = 0;i < mid % chars.length;i++){
         ans += chars[i];
       }
       //填充字符串
       ans += string;
-      for(var i = 0;i < Math.floor((length - string.length - mid) / chars.length); i++){
+      for(let i = 0;i < Math.floor((length - string.length - mid) / chars.length); i++){
         ans += chars;
       }
       //取余数
-      for(var i = 0;i < (length - string.length - mid) % chars.length;i++){
+      for(let i = 0;i < (length - string.length - mid) % chars.length;i++){
         ans += chars[i];
       }
       return ans;
@@ -879,12 +879,12 @@ var liangddkk = {
       if(length < string.length){
         length = string.length;
       }
-      var ans = '';
+      let ans = '';
       ans += string;
-      for(var i = 0;i < Math.floor((length - string.length) / chars.length);i++){
+      for(let i = 0;i < Math.floor((length - string.length) / chars.length);i++){
         ans += chars;
       }
-      for(var i = 0;i < (length - string.length) % chars.length;i++){
+      for(let i = 0;i < (length - string.length) % chars.length;i++){
         ans += chars[i];
       }
       return ans;
@@ -900,11 +900,11 @@ var liangddkk = {
       if(length < string.length){
         length = string.length;
       }
-      var ans = '';
-      for(var i = 0;i < Math.floor((length - string.length) / chars.length);i++){
+      let ans = '';
+      for(let i = 0;i < Math.floor((length - string.length) / chars.length);i++){
         ans += chars;
       }
-      for(var i = 0;i < (length - string.length) % chars.length;i++){
+      for(let i = 0;i < (length - string.length) % chars.length;i++){
         ans += chars[i];
       }
       ans += string;
@@ -918,8 +918,8 @@ var liangddkk = {
      * @returns {String} 
      */
     repeat: function(string,n = 1){
-      var ans = "";
-      for(var i = 0;i < n;i++){
+      let ans = "";
+      for(let i = 0;i < n;i++){
         ans += string;
       }
       return ans;
@@ -930,29 +930,30 @@ var liangddkk = {
      * @returns {Array}
      */
     intersection: function(...arrays){
-      var firstArr = [];
-      for(var i = 0;i < arrays[0].length;i++){
+      let firstArr = [];
+      for(let i = 0;i < arrays[0].length;i++){
         firstArr[firstArr.length] = arrays[0][i];
       }
-      for(var i = 1;i < arrays.length;i++){
-        var tmp = getSame(firstArr,arrays[i]);
+      for(let i = 1;i < arrays.length;i++){
+        let tmp = getSame(firstArr,arrays[i]);
         firstArr = [];
-        for(var i in tmp){
+        for(let i in tmp){
           firstArr[firstArr.length] = tmp[i];
         }
       }
 
       function getSame(arr1,arr2){
-        var map = [];
-        var ans = [];
-        for(var i in arr1){
+        let map = [];
+        let ans = [];
+        for(let i in arr1){
           map[arr1[i]] = true;
         }
-        for(var i in arr2){
+        for(let i in arr2){
           if(map[arr2[i]]){
             ans[ans.length] = arr2[i];
           }
         }
+        console.log(map)
         return ans;
       }
       return firstArr;
@@ -963,11 +964,11 @@ var liangddkk = {
      * @returns {Array}
      */
     xor: function(...arrays){
-      var map = {};
+      let map = {};
       //map: {1: 1, 2: 2, 3: 1}
       //数组从0遍历，不越界
-      for(var i in arrays){
-        for(var j in arrays[i]){
+      for(let i in arrays){
+        for(let j in arrays[i]){
           if(map[arrays[i][j]]){
             map[arrays[i][j]]++;//有值的加一
           }else{
@@ -975,9 +976,9 @@ var liangddkk = {
           }
         }
       }
-      var ans = [];
+      let ans = [];
       //对象从小到大遍历
-      for(var key in map){
+      for(let key in map){
         if(map[key] == 1){//交集的补集
           ans[ans.length] = Number(key);//字符转数组
         }
@@ -1008,8 +1009,8 @@ var liangddkk = {
      * @returns {Object}
      */
     invert: function(object){
-        var ans = {};
-        for(var i in object){
+        let ans = {};
+        for(let i in object){
             ans[object[i]] = i;
         }
         return ans;
@@ -1020,9 +1021,9 @@ var liangddkk = {
      * @returns {Object}
      */
     keys: function(object){
-        var newObj = Object(object);
-        var ans = [];
-        for(var i in newObj){
+        let newObj = Object(object);
+        let ans = [];
+        for(let i in newObj){
             if(newObj.hasOwnProperty(i) == true)
                 ans[ans.length] = i;
         }
@@ -1034,9 +1035,9 @@ var liangddkk = {
      * @returns {Object}
      */
     assign: function(...objects){
-        var ans = {};
-        for(var i in objects){
-            for(var j in objects[i]){
+        let ans = {};
+        for(let i in objects){
+            for(let j in objects[i]){
                 if(objects[i].hasOwnProperty(j) == true){
                     ans[j] = objects[i][j];
                 } 
@@ -1051,16 +1052,16 @@ var liangddkk = {
      * @returns {Object} 
      */
     omit: function(object, value){
-        var ans  = {};
-        var map = {};
+        let ans  = {};
+        let map = {};
         if(Array.isArray(value)){
-            for(var i in value){
+            for(let i in value){
                 map[value[i]] = true;
             }
         }else{
             map[value] = true;
         }
-        for(var i in object){
+        for(let i in object){
             if(map[i]) continue;
             else ans[i] = object[i];
         }
@@ -1073,16 +1074,16 @@ var liangddkk = {
      * @returns {Object} 
      */
     pick: function(object, value){
-        var ans  = {};
-        var map = {};
+        let ans  = {};
+        let map = {};
         if(Array.isArray(value)){
-            for(var i in value){
+            for(let i in value){
                 map[value[i]] = true;
             }
         }else{
             map[value] = true;
         }
-        for(var i in object){
+        for(let i in object){
             if(map[i]) ans[i] = object[i];
         }
         return ans;
@@ -1093,13 +1094,13 @@ var liangddkk = {
      * @returns {String} 
      */
     capitalize: function(string){
-      var ans = '';
+      let ans = '';
       if(string[0].charCodeAt() >= 97 && string[0].charCodeAt() <= 122){
         ans += String.fromCharCode(string[0].charCodeAt() - 32);//小写变大写
       }else{
         ans += string[0];
       }
-      for(var i = 1;i < string.length;i++){
+      for(let i = 1;i < string.length;i++){
         if(string[i].charCodeAt() >= 97 && string[i].charCodeAt() <= 122){//小写输出
           ans += string[i];
         }else{
@@ -1120,7 +1121,7 @@ var liangddkk = {
       }else{
         position = position - 1;//数组的位置
       }
-      for(var i = position,j = 0;i < target.length;i++,j++){
+      for(let i = position,j = 0;i < target.length;i++,j++){
         if(string[i] != target[j]){
           return false;
         }
@@ -1135,9 +1136,9 @@ var liangddkk = {
     multiply: function(multiplier,multiplicand){
         return multiplier * multiplicand;
     },values: function(object){
-      var newObj = Object(object);
-      var ans = [];
-      for(var i in newObj){
+      let newObj = Object(object);
+      let ans = [];
+      for(let i in newObj){
           if(newObj.hasOwnProperty(i) == true)
               ans[ans.length] = newObj[i];
       }
@@ -1149,8 +1150,8 @@ var liangddkk = {
    * @param {Array} values 
    */
   zipObject: function(props = [],values = []){
-    var ans = {};
-    for(var i = 0,j = 0;i < props.length,j < values.length;i++,j++){
+    let ans = {};
+    for(let i = 0,j = 0;i < props.length,j < values.length;i++,j++){
       ans[props[i]] = values[j];
     }
     return ans;
@@ -1160,8 +1161,8 @@ var liangddkk = {
    * @param {Array/Object} array 
    */
   sample: function(array){
-    var r = Math.random();
-    var index = Math.floor(r * array.length);
+    let r = Math.random();
+    let index = Math.floor(r * array.length);
     return array[index];
   },
   /**
@@ -1171,16 +1172,16 @@ var liangddkk = {
    * @returns {Array}
    */
   sampleSize:function(array,n = 1){
-    var ans = [];
-    var flag = [];
+    let ans = [];
+    let flag = [];
     flag.length = array.length;
     flag.fill(false);//填充false
     if(n > array.length){
       n = array.length;
     }
     while(ans.length < n){
-      var r = Math.random();
-      var index = Math.floor(r * array.length);
+      let r = Math.random();
+      let index = Math.floor(r * array.length);
       if(!flag[index]){
         ans[ans.length] = array[index];
         flag[index] = true; //判断过的index为true
@@ -1194,13 +1195,13 @@ var liangddkk = {
    * @returns {Array}
    */
   shuffle: function(array){
-    var ans = [];
-    var flag = [];
+    let ans = [];
+    let flag = [];
     flag.length = array.length;
     flag.fill(false);
     while(ans.length < array.length){
-      var r = Math.random();
-      var index = Math.floor(r * array.length);
+      let r = Math.random();
+      let index = Math.floor(r * array.length);
       if(!flag[index]){
         ans[ans.length] = array[index];
         flag[index] = true;
@@ -1218,11 +1219,11 @@ var liangddkk = {
     if(chars == null){
       chars = ' ';
     }
-    var ans = ' ';
-    var left = 0;
-    var right = string.length - 1;
-    var map = {};
-    for(var i in chars){
+    let ans = ' ';
+    let left = 0;
+    let right = string.length - 1;
+    let map = {};
+    for(let i in chars){
       map[chars[i]] = true;
     }
     while(map[string[left]] && left < string.length){
@@ -1231,7 +1232,7 @@ var liangddkk = {
     while(map[string[right]] && right >= 0){
       right--;
     }
-    for(var i = left;i < right;i++){
+    for(let i = left;i < right;i++){
       ans += string[i];
     }
     return ans;
@@ -1247,17 +1248,17 @@ var liangddkk = {
     if(chars == null){
       chars = ' ';
     }
-    var ans = ' ';
-    var left = 0;
-    var right = string.length - 1;
-    var map = {};
-    for(var i in chars){
+    let ans = ' ';
+    let left = 0;
+    let right = string.length - 1;
+    let map = {};
+    for(let i in chars){
       map[chars[i]] = true;
     }
     while(map[string[left]] && left < string.length){
       left++;
     }
-    for(var i = left;i < right;i++){
+    for(let i = left;i < right;i++){
       ans += string[i];
     }
     return ans;
@@ -1273,17 +1274,17 @@ var liangddkk = {
     if(chars == null){
       chars = ' ';
     }
-    var ans = ' ';
-    var left = 0;
-    var right = string.length - 1;
-    var map = {};
-    for(var i in chars){
+    let ans = ' ';
+    let left = 0;
+    let right = string.length - 1;
+    let map = {};
+    for(let i in chars){
       map[chars[i]] = true;
     }
     while(map[string[right]] && right >= 0){
       right--;
     }
-    for(var i = left;i < right;i++){
+    for(let i = left;i < right;i++){
       ans += string[i];
     }
     return ans;
@@ -1295,7 +1296,7 @@ var liangddkk = {
    * @returns {String}
    */
   escapge: function(string){
-    var map = {
+    let map = {
       '&' : '&amp;',
       '<' : '&lt;',
       '>' : '&gt;',
@@ -1303,8 +1304,8 @@ var liangddkk = {
       "'" : '&apos;',
       '`' : '&grave;'
     }
-    var ans = '';
-    for(var i = 0;i < string.length;i++){
+    let ans = '';
+    for(let i = 0;i < string.length;i++){
       if(map[string[i]]){
         ans += map[string[i]];
       }else{
@@ -1320,11 +1321,11 @@ var liangddkk = {
    * @returns {Number}
    */
   parseInt: function(string,radix = 10){
-    var ans = 0;
+    let ans = 0;
     if(radix == 0){
       radix = 10;
     }
-    var map = {
+    let map = {
       'A' : 10,
       'B' : 11,
       'C' : 12,
@@ -1332,7 +1333,7 @@ var liangddkk = {
       'E' : 14,
       'F' : 15 
     } 
-    for(var i = 0;i < string.length;i++){
+    for(let i = 0;i < string.length;i++){
       ans *= radix;
       if(map[string[i]]){
         ans += map[string[i]];
@@ -1350,8 +1351,8 @@ var liangddkk = {
    * @returns {Boolean}
    */
   startWith: function(string,pattern,replacement){
-    var start = 0;
-    for(var i = position,j = 0;i < string.length,j < target.length;i++,j++){
+    let start = 0;
+    for(let i = position,j = 0;i < string.length,j < target.length;i++,j++){
       if(string[i] != target[j]){
         return false;
       }
@@ -1369,8 +1370,8 @@ var liangddkk = {
    * @returns {String}
    */
   lowerCase: function(string){
-    var ans = '';
-    var point = 0;
+    let ans = '';
+    let point = 0;
     while(point < string.length && !((string[point].charCodeAt() >= 65 && string[point].charCodeAt() <= 90) || (string[point].charCodeAt() >= 97 && string[point].charCodeAt() <= 122))){
       point++;//65和90是大写，97和122是小写,不是小写字母和大写字母，point增加表明trim前端
     }
@@ -1398,14 +1399,14 @@ var liangddkk = {
    * @returns {String}
    */
   camelCase: function(string){
-    var lowStr = this.lowerCase(string);//转换为小写
-    var ans = '';
-    var point = 0;
+    let lowStr = this.lowerCase(string);//转换为小写
+    let ans = '';
+    let point = 0;
     while(lowStr[point] != ' '){//空格分割,"foo bar"
       ans += lowStr[point];
       point++;
     }
-    var flag = true;
+    let flag = true;
     while(point < lowStr.length){
       if(lowStr[point] == ' '){
         flag = true;
@@ -1427,9 +1428,9 @@ var liangddkk = {
    * @returns {String}
    */
   kebabCase: function(string){
-    var lowStr = this.lowerCase(string);//转换为有空格的小写
-    var ans = '';
-    for(var i = 0;i < lowStr.length;i++){
+    let lowStr = this.lowerCase(string);//转换为有空格的小写
+    let ans = '';
+    for(let i = 0;i < lowStr.length;i++){
       if(lowStr[i] == ' '){
         ans += '-';
       }else{
@@ -1444,9 +1445,9 @@ var liangddkk = {
    * @returns {String}
    */
   snakeCase: function(string){
-    var lowStr = this.lowerCase(string);//转换为有空格的小写
-    var ans = '';
-    for(var i = 0;i < lowStr.length;i++){
+    let lowStr = this.lowerCase(string);//转换为有空格的小写
+    let ans = '';
+    for(let i = 0;i < lowStr.length;i++){
       if(lowStr[i] == ' '){
         ans += '_';
       }else{
@@ -1461,8 +1462,8 @@ var liangddkk = {
    * @returns {String}
    */
   startCase: function(string){
-    var ans = '';
-    var point = 0;
+    let ans = '';
+    let point = 0;
     while(point < string.length && !((string[point].charCodeAt() >= 65 && string[point].charCodeAt() <= 90) || (string[point].charCodeAt() >= 97 && string[point].charCodeAt() <= 122))){
       point++;//65和90是大写，97和122是小写,不是小写字母和大写字母，point增加表明trim前端
     }
@@ -1491,10 +1492,10 @@ var liangddkk = {
    * @returns {Array}
    */
   flatten: function(array){
-    var ans = [];
-    for(var i in array){
+    let ans = [];
+    for(let i in array){
       if(Array.isArray(array[i])){//Array.isArray(array[i]): false是否是数组
-        for(var j in array[i]){
+        for(let j in array[i]){
           ans[ans.length] = array[i][j];
         }
       }else{
@@ -1510,8 +1511,8 @@ var liangddkk = {
    * @returns {Array}
    */
   flattenDepth: function(array,depth = 1){
-    var ans = array;
-    for(var i = 0;i < depth;i++){
+    let ans = array;
+    for(let i = 0;i < depth;i++){
       ans = this.flatten(ans);//flatten函数默认除掉一个array数组层级
     }
     return ans;
@@ -1523,9 +1524,9 @@ var liangddkk = {
    */
   flattenDeep: function flattenDeep(array){
     //方法一 普通调用
-    var res = [];
+    let res = [];
     function getDeep(arr){
-      for(var i = 0;i < arr.length;i++){
+      for(let i = 0;i < arr.length;i++){
         if(Array.isArray(arr[i])){
           getDeep(arr[i]);
         }else{
@@ -1546,8 +1547,8 @@ var liangddkk = {
    * @returns {Object}
    */
   fromPair: function(pairs){
-    var ans = {};
-    for(var i in pairs){
+    let ans = {};
+    for(let i in pairs){
       ans[pairs[i][0]] = pairs[i][1];
     }
     return ans;
@@ -1558,9 +1559,9 @@ var liangddkk = {
    * @returns {Array}
    */
   sortedUniq: function(array){
-    var ans = [];
+    let ans = [];
     ans.push(array[0]);
-    for(var i = 1;i < array.length;i++){
+    for(let i = 1;i < array.length;i++){
       if(array[i] != array[i - 1]){
         ans.push(array[i]);
       }
@@ -1574,9 +1575,9 @@ var liangddkk = {
    * @returns {Array}
    */
   sortedUniqBy: function(array,iteratee){
-    var map = {};
-    var ans = [];
-    for(var i in array){
+    let map = {};
+    let ans = [];
+    for(let i in array){
       if(!map[iteratee(array[i])]){//!map[""] == true,map[""] == undefined
         ans.push(array[i]);
         map[iteratee(array[i])] = true;
@@ -1590,8 +1591,8 @@ var liangddkk = {
    * @returns {Array}
    */
   toArray:function(value){
-    var ans = [];
-    for(var i in value){
+    let ans = [];
+    for(let i in value){
       ans.push(values[i]);
     }
     return ans;
@@ -1644,8 +1645,8 @@ var liangddkk = {
    */
   inRange: function(...nums){
     if(nums.length == 3){
-      var start = nums[1] < nums[2] ? nums[1] : nums[2];
-      var end = nums[1] < nums[2] ? nums[2] : nums[1];
+      let start = nums[1] < nums[2] ? nums[1] : nums[2];
+      let end = nums[1] < nums[2] ? nums[2] : nums[1];
       if(nums[0] >= start &&  nums[0] < end){
         return true;
       }else{
@@ -1653,8 +1654,8 @@ var liangddkk = {
       }
     }
     if(nums.length == 2){
-      var start = nums[1] < 0 ? nums[1] : 0;
-      var end = nums[1] < 0 ? 0 : nums[1];
+      let start = nums[1] < 0 ? nums[1] : 0;
+      let end = nums[1] < 0 ? 0 : nums[1];
       if(nums[0] >= start &&  nums[0] < end){
         return true;
       }else{
@@ -1668,8 +1669,8 @@ var liangddkk = {
    * @returns {string} 
    */
   toLower: function(string = ''){
-    var ans = '';
-    for(var i = 0; i  < string.length;i++){
+    let ans = '';
+    for(let i = 0; i  < string.length;i++){
       if(string[i].charCodeAt() > 65 && string[i].charCodeAt() <= 90){
         ans += String.fromCharCode(string[i].charCodeAt() + 32);
       }else{
@@ -1683,8 +1684,8 @@ var liangddkk = {
    * @returns {string} 
    */
   toUpper: function(string = ''){
-    var ans = '';
-    for(var i = 0; i  < string.length;i++){
+    let ans = '';
+    for(let i = 0; i  < string.length;i++){
       if(string[i].charCodeAt() > 97 && string[i].charCodeAt() <= 122){
         ans += String.fromCharCode(string[i].charCodeAt() - 32);
       }else{
@@ -1702,26 +1703,26 @@ var liangddkk = {
   includes: function(collection,value,fromIndex = 0){
     if(Array.isArray(collection)){
       if(fromIndex >= 0){
-        for(var i = fromIndex;i < collection.length;i++){
+        for(let i = fromIndex;i < collection.length;i++){
           if(collection[i] == value){
             return true;
           }
         }
       }else{
-        for(var i = collection.length - 1;i >= collection.length - 1 + fromIndex; i--){
+        for(let i = collection.length - 1;i >= collection.length - 1 + fromIndex; i--){
           if(collection[i] == value){
             return true;
           }
         }
       }
     }else if(Object.prototype.toString.call(collection) === '[Object Object]'){
-      for(var i in collection){
+      for(let i in collection){
         if(collection[i] == value){
           return true;
         }
       }
     }else{
-      var re1 = new RegExp(value);
+      let re1 = new RegExp(value);
       return rel.test(collection);
     }
   },
@@ -1732,22 +1733,22 @@ var liangddkk = {
    * @returns {Array} 
    */
   at: function(object,paths){
-    var ans = [];
-    for(var i in paths){
-      var arr = paths[i].split('.');
-      var re1 = /(?<=\[)\d+(?=\])/;
-      var tmp = object;
-      for(var j in arr){
+    let ans = [];
+    for(let i in paths){
+      let arr = paths[i].split('.');
+      let re1 = /(?<=\[)\d+(?=\])/;
+      let tmp = object;
+      for(let j in arr){
         if(re1.test(arr[j])){
-          var key = '';
-          for(var k in arr[j]){
+          let key = '';
+          for(let k in arr[j]){
             if(arr[j][k] != '['){
               key += arr[j][k];
             }else{
               break;
             }
           }
-          var num = re1.exec(arr[j])[0];
+          let num = re1.exec(arr[j])[0];
           tmp = tmp[key][Number(num)];
         }else{
           tmp = tmp[arr[j]];
@@ -1764,10 +1765,10 @@ var liangddkk = {
    * @param {*} defaultValue 
    */
   get: function(object,path,defaultValue){
-    var ans;
-    var tmp = object;
+    let ans;
+    let tmp = object;
     if(Array.isArray(path)){
-      for(var i in path){
+      for(let i in path){
         if(tmp[path[i]]){
           tmp = tmp[path[i]];
         }else{
@@ -1776,13 +1777,13 @@ var liangddkk = {
       }
       return tmp;
     }else{
-      var arr = path.split('.');
-      var re1 = /(?<=\[)\d+(?=\])/g;
-      var tmp = object;
-      for(var j in arr){
+      let arr = path.split('.');
+      let re1 = /(?<=\[)\d+(?=\])/g;
+      let tmp = object;
+      for(let j in arr){
         if(re1.test(arr[j])){
-          var key = '';
-          for(var k in arr[j]){
+          let key = '';
+          for(let k in arr[j]){
             if(arr[j][k] != '['){
               key += arr[j][k];
             }else{
@@ -1796,7 +1797,7 @@ var liangddkk = {
           }
           re1.lastIndex= 0;
           while(re1.lastIndex != null){
-            var num = re1.exec(arr[j]);
+            let num = re1.exec(arr[j]);
             if(num == null){
               break;
             }
@@ -1814,8 +1815,8 @@ var liangddkk = {
     }
   },
   range:function(start,end){
-    var result = [];
-    for(var i = start;i <= end;i++){
+    let result = [];
+    for(let i = start;i <= end;i++){
       result.push(i);
     }
     return result;
@@ -1826,11 +1827,11 @@ var liangddkk = {
    * @return {Number} sum
    */
   isSXH:function(n){
-    var m = n;
-    var width = getDigitwidth(n);
-    var sum = 0;
+    let m = n;
+    let width = getDigitwidth(n);
+    let sum = 0;
     while(n > 0){
-      var digit = n % 10;
+      let digit = n % 10;
       sum += power(digit,width);
       n = (n - digit) / 10; 
     }
@@ -1845,8 +1846,8 @@ var liangddkk = {
    * 
    */
   before:function (n,func){
-    var i = 0;
-    var result;
+    let i = 0;
+    let result;
     return function(...args){
       if(i < n){
         i++;
@@ -1863,8 +1864,8 @@ var liangddkk = {
    * 
    */
   after:function (n,func){
-    var i = 0;
-    var result;
+    let i = 0;
+    let result;
     return function(...args){
       if(i < n){
         i++;
@@ -1929,8 +1930,8 @@ var liangddkk = {
    */
   reject:function(ary,test){//自己实现的filter函数
     return this.filter(ary,negate(test));
-    // var result = [];
-    // for(var i = 0;i < ary.length;i++){
+    // let result = [];
+    // for(let i = 0;i < ary.length;i++){
     //   if(!test(ary[i])){
     //     result.push(ary[i]);
     //   }
@@ -1961,10 +1962,10 @@ var liangddkk = {
    */
   bind:function(f, ...fixedArgs) { // [1,null,null,3]
     return function bound(...args) {//[7,8,9]
-      var copy = fixedArgs.slice()
-      var j = 0
+      let copy = fixedArgs.slice()
+      let j = 0
   
-      for (var i = 0; i < copy.length; i++) {
+      for (let i = 0; i < copy.length; i++) {
         if (copy[i] === null) {//绑定参数
           copy[i] = args[j++]
         }
@@ -1977,7 +1978,7 @@ var liangddkk = {
     }
   },
   filter:function(ary,predicate) { // [1,null,null,3]
-    var test = predicate;
+    let test = predicate;
     if(typeof predicate === 'string'){
       test = it => it[predicate];
     }else if(Array.isArray(predicate)){//{active:true,gender:'f'}
@@ -1986,7 +1987,7 @@ var liangddkk = {
       if(Array.isArray(predicate))
       predicate = this.fromPair(predicate);
       test = (it) => {
-        for(var key in predicate){
+        for(let key in predicate){
           if(predicate[key] != it[key]){
             return false;
           }
@@ -2007,7 +2008,7 @@ var liangddkk = {
    * @return {Function} func
    */
   iteratee:function(ary,predicate) {
-    var test = predicate;
+    let test = predicate;
     if(typeof predicate === 'string'){
       test = it => it[predicate];
     }else if(Array.isArray(predicate)){//{active:true,gender:'f'}
@@ -2016,7 +2017,7 @@ var liangddkk = {
       if(Array.isArray(predicate))
       predicate = this.fromPair(predicate);
       test = (it) => {
-        for(var key in predicate){
+        for(let key in predicate){
           if(predicate[key] != it[key]){
             return false;
           }
@@ -2036,7 +2037,7 @@ var liangddkk = {
    */
   matches:function(target) {
     return function(obj){
-      for(var key in target){
+      for(let key in target){
         if(obj[key] !== target[key]){
           return false;
         }
