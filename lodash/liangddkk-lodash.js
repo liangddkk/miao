@@ -1,4 +1,4 @@
-let liangddkk = {
+var liangddkk = {
   /**
    * 判断一个数是否为NaN
    * @param {*} val 
