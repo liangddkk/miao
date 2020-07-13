@@ -12,8 +12,8 @@ let liangddkk = {
     }
   },
     /**
-   * 判断一个数字是否为null
-   * @param  {Number} val 
+   * 判断一个数字是否为null 1
+   * @param  {Number} val    
    * @returns {Boolean}
    */
   isNaN: function(val){
