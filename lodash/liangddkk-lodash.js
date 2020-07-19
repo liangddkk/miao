@@ -150,10 +150,10 @@ var liangddkk = {
   },
   differenceWith(array,...args){
     let func = args[args.length-1];
+    let arg = args[0];
     let ans = [];
     for(let i in array){
-      if(!func(array[i],args[0])){
-        flag = false; 
+      if(!func(array[i],arg[i])){
         ans.push(array[i]);
       }
     }
