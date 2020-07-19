@@ -119,6 +119,45 @@ var liangddkk = {
     // }
     // return array.filter((x) => !arrays.includes(x))
   },
+  differenceBy:function(array,...args){
+    let func;
+    if(Object.prototype.toString.call(args[args.length - 1]) == '[object Array]'){
+      return this.difference(array,...args)
+    }else{
+      func = this.funIteratee(args[args.length - 1])
+    }
+    let map = {}
+    for(let i in array){
+      if(!map[array[i]]){
+        map[func(array[i])] = true;
+      }
+    }
+    for(let i in args){
+      for(let j in args[i]){
+        if(map[func(args[i][j])]){
+          map[func(args[i][j])] = false; 
+        }
+      }
+    }
+    let ans = [];
+    //结果值是从第一数组中选择
+    for(let i in array){
+      if(map[func(array[i])]){
+        ans.push(array[i]);
+      }
+    }
+    return ans;
+  },
+  funIteratee:function (func) {
+    if(Object.prototype.toString.call(func) == '[object Function]'){
+      return func;
+    }
+    if(Object.prototype.toString.call(func) == '[object String]'){
+      return function(object){
+        return liangddkk.get(object,func);
+      };
+    }
+  },
   /**
    * 返回一个去掉前n项的数组,n默认值为1
    * @param {Array} array 
