@@ -148,6 +148,18 @@ var liangddkk = {
     }
     return ans;
   },
+  differenceWith(array,...args){
+    let func = args[args.length-1];
+    let ans = [];
+    for(let i in array){
+      for(let j in array[i]){
+        if(!func(array[i][j],args[0])){
+          ans.push(array[i][j]);
+        }
+      }
+    }
+    return ans;
+  },
   funIteratee:function (func) {
     if(Object.prototype.toString.call(func) == '[object Function]'){
       return func;
