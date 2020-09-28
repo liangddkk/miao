@@ -26,7 +26,7 @@
   /**
    * YOUR TASK
 画图的题：
-
+画一条实线
 画一条一个实点一个空点的虚线
 画一条两个实点两个空点的虚线
 画一条三个实点两个空点的虚线
@@ -42,76 +42,121 @@
 </script>
 <script>
   // YOUR CODE GOES BELOW
-  //画一条实线
-  var x1 = 0;
-  var y1 = 20;
-  for(;x1<=400;x1++){
-    dot(x1,y1,'red');
+  // 画一条直线
+  var x01 = 0
+  var y01 = 10
+  for (; x01 <= 400; x01++)
+    dot(x01, y01, 'red')
+
+  // 画一条一个实点一个空点的虚线
+  var x02 = 0
+  var y02 = 20
+  var flag02 = 0
+  for (; x02 <= 400; x02++) {
+    if(flag02)
+      dot(x02, y02, 'red')
+      flag02 = !flag02
   }
-
-
-  //画一条一个实点一个空点的虚线
-  var x2 = 0;
-  var y2 = 30;
-  var flag2 = 1;
-  for(;x2<=400;x2++){
-    if(x2 % 2 == 0){
-      dot(x2,y2,'blue');
-    }
-  }
-
-  //画一条两个个实点两个空点的虚线
-  var x3 = 0;
-  var y3 = 50;
-  var flag3 = 0;
-  var size03 = 0;
-  for(;x3<=400;x3++){
-    if(size03 == 0){
+  // 画一条两个实点两个空点的虚线
+  var x03 = 0
+  var y03 = 30
+  var flag03 = 0
+  var size03 = 0
+  for (; x03 <= 400; x03++) {
+    if(size03 == 0) {
       size03 = 2;
-      flag3 = !flag3;
+      flag03 = !flag03
     }
-    if(flag3){
-      dot(x3,y3,'red');
-    }
-    size03--;
+    if(flag03)
+      dot(x03, y03, 'red')
+    size03--
+  }
+  // 画一条3个实点两个空点的虚线
+  var x04 = 0
+  var y04 = 40
+  var flag04 = 5
+  for (; x04 <= 400; x04++) {
+    if (flag04 == 0)
+      flag04 = 5;
+    if(flag04 > 0 && flag04 <= 3)
+      dot(x04, y04, 'red')
+    flag04--;
   }
 
-  //画一条3个实点两个空点的虚线
-  var x4 = 0;
-  var y4 = 60;
-  var flag4 = 3;
-  for(;x4<=400;x4++){
-    if(flag4 == 0){
-      flag4 = 5;
-    }
-    if(flag4 > 0 && flag4 <= 3){
-      dot(x4,y4,'blue');
-    }
-    flag4--;
-  }
-
-   //画一条45度的斜线
-   var x5 = 0;
-  var y5 = 0;
-  for(;x5<=400;x5++){
-    y5 = x5
-    dot(x5,y5,'black');
+  // 画一条45度的斜线
+  var x05 = 0
+  var y05 = 0
+  for (; x05 < 300; x05++) {
+    y05 = x05
+    dot(x05, y05, 'yellow')
   }
 
   // 画一条跨越画布左上角和右下角的对角线
-  var x6 = 0;
-  var y6 = 0;
-  for(;x6<=400;x6++){
-    y6 = 3/4 * x6 
-    dot(x6,y6,'black');
+  var x06 = 0
+  var y06 = 0
+  for (; x06 < 400; x06++) {
+    y06 = 3 * x06 / 4
+    dot(x06, y06, 'yellow')
   }
 
   // 画一个空心矩形
-  // var x7 = 0;
-  // var y7 = 0;
-  // for(;x7<=400;x7++){
-  //   y6 = 3/4 * x7 
-  //   dot(x7,y7,'black');
-  // }
+  var x07 = 20
+  var y07 = 50
+  for (; y07 <= 150; y07++) {
+    if(y07 == 50 || y07 == 150) {
+      for (var i = 0; i <= 100; i++)
+        dot(x07 + i, y07, 'blue')
+    } else {
+      for (var i = 0; i <= 100; i++)
+        if(i == 0 || i == 100)
+          dot(x07 + i, y07, 'blue')
+    }
+  }
+
+  // 画一个实心矩形
+    var x08 = 20
+    var y08 = 180
+    for (; y08 <= 280; y08++) {
+      for (var i = 0; i <= 100; i++)
+        dot(x08 + i, y08, 'blue')
+    }
+
+  // 画一个rgb色彩空间的某一面
+    var x09 = 150
+    var y09 = 50
+    function translatergb(x, y, z) {
+      var m = 'rgb(' + (x * 255 / 100) + ',' + (y * 255 / 100) + ',' + z + ')'
+      return m
+    }
+    for (var i = 0; i <= 100; i++) {
+      for (var j = 0; j <= 100; j++)
+        dot(x09 + j, y09 + i, translatergb(j, i, 255))
+    }
+
+    // 画一个空心的圆
+     var x10 = 150
+     var y10 = 180
+     for(var i = 0; i <= 100; i++) {
+       for (var j = 0; j <= 100; j++)
+        if(Math.pow(i - 50, 2) + Math.pow(j - 50, 2) <= 2500 && Math.pow(i - 50, 2) + Math.pow(j - 50, 2) >= 2400)
+          dot(x10 + i, y10 + j, 'lime')
+     }
+    // 画一个实心心的圆
+     var x11 = 280
+     var y11 = 50
+     for(var i = 0; i <= 100; i++) {
+       for (var j = 0; j <= 100; j++)
+        if(Math.pow(i - 50, 2) + Math.pow(j - 50, 2) <= 2500)
+          dot(x11 + i, y11 + j, 'lime')
+     }
+
+     // 画出sin(x)的图像
+     var x12 = 0
+     var y12 = 200;
+     var a = 0;
+     for (var i = 0; i < 400; i++) {
+       a = Math.sin(i / 20) * 50;
+       dot(x12 + i, y12 + a, 'orange')
+     }
 </script>
 </html>
